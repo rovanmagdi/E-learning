@@ -8,7 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import { StyledAppBar, StyledLink } from "../styled/Bar";
-import {  Link } from "@mui/material";
 import { StyledButton } from "../styled/Button";
 
 const pages = ["Home", "All Course", "Pages", "Blog", "Content"];
@@ -25,7 +24,7 @@ const Navbar = () => {
 
   return (
     <StyledAppBar>
-      <Container >
+      <Container>
         <Toolbar disableGutters>
           <Box
             component="img"
@@ -76,28 +75,16 @@ const Navbar = () => {
               display: { xs: "none", md: "flex" },
               maxWidth: "50%",
               margin: "auto",
-
             }}
           >
             {pages.map((page) => (
-              <StyledLink
-                key={page}
-              >
-                {page}
-              </StyledLink>
+              <StyledLink key={page}>{page}</StyledLink>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0, color: "red" }}>
-            <Link
-
-              sx={{ my: 2, color: "#212832", textDecoration: "none" }}
-            >
-              Sign In
-            </Link>
-            <StyledButton>
-              Sign up
-            </StyledButton>
+            <StyledLink>Sign In</StyledLink>
+            <StyledButton>Sign up</StyledButton>
           </Box>
         </Toolbar>
       </Container>

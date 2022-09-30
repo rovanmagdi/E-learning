@@ -20,7 +20,6 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   color: "#212832",
   margin: "15px",
   textDecoration: "none",
-  fontWeight: "bold",
   "&:hover":{
     cursor:"pointer",
     color:`${theme.palette.primary.main}`,
