@@ -11,37 +11,38 @@ import { Grid, Link } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TemporaryDrawer from "../component/drawar";
+import NavbarTop from "./navbar-top";
 
 const pages = ["Home", "All Course", "Pages", "Blog", "Content"];
 
 const Navbar = () => {
   // const [spacing, setSpacing] = React.useState(2);
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("760"));
+  const matches = useMediaQuery(theme.breakpoints.up("898"));
 
   return (
-    <Grid
-      container
-      sx={{ position: "absolute", zIndex: "1", marginTop: "20px" }}
-    >
+    <Grid container sx={{ position: "absolute" }}>
       {matches ? (
-        <Grid item xs={12}>
-          <StyledNavbar container >
-            <Link
-              component="img"
-              src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
-              sx={{ width: "160px", height: "40px", marginTop: "13px" }}
-            />
+        <>
+          <NavbarTop />
+          <Grid item xs={12} sx={{ marginTop: "20px" }}>
+            <StyledNavbar container>
+              <Link
+                component="img"
+                src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
+                sx={{ width: "160px", height: "40px", marginTop: "13px" }}
+              />
 
-            <Box component="div">
-              {pages.map((page) => (
-                <StyledLink key={page}>{page}</StyledLink>
-              ))}
-              <StyledLink sx={{ marginLeft: "30px" }}>Sign In</StyledLink>
-              <StyledButton>Sign up</StyledButton>
-            </Box>
-          </StyledNavbar>
-        </Grid>
+              <Box component="div">
+                {pages.map((page) => (
+                  <StyledLink key={page}>{page}</StyledLink>
+                ))}
+                <StyledLink sx={{ marginLeft: "30px" }}>Sign In</StyledLink>
+                <StyledButton>Sign up</StyledButton>
+              </Box>
+            </StyledNavbar>
+          </Grid>
+        </>
       ) : (
         <StyledNavbarResponsive>
           <Grid container spacing={2} sx={{ margin: "5px 0px 5px 0px " }}>
