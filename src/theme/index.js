@@ -1,4 +1,4 @@
-import { colors } from "@mui/material";
+
 import { createTheme } from "@mui/material/styles";
 
 let theme  = createTheme({
@@ -7,11 +7,11 @@ let theme  = createTheme({
     primary: {
       main: "#198754",
       light:"#eefbf3",
-      dark: colors.orange[800],
+      dark: "rgba(48,146,85,0.25)",
     },
     secondary: {
       main: "#198754",
-      light:'#585D65',
+      light:'#ffff',
       dark:"#373B40"
 
     },

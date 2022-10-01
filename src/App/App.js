@@ -10,7 +10,7 @@ function App() {
       <ThemeProvider theme={theme}>
 
         <Navbar />
-        <Header />
+        {/* <Header /> */}
       </ThemeProvider>
     </Box>
   );

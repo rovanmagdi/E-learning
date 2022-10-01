@@ -1,27 +1,31 @@
 import styled from "@emotion/styled";
-import { AppBar, Link } from "@mui/material";
+import { Grid, Link } from "@mui/material";
+// 705
 
-export const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  display: "flex",
+export const StyledNavbar = styled(Grid)(({ theme }) => ({
   justifyContent: "center",
-  right: "auto",
-  left: "20%",
-  width: "60%",
-  marginTop: "20px",
-  backgroundColor: "transparent",
-  border: `1px solid ${theme.palette.primary.main}`,
+  justifyItems: "center",
+  border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: "10px",
-  position: "absolute",
-  boxShadow: "none",
-  fontFamily: ["Gorditas", "cursive"].join(","),
+  width: "800px",
+  margin: "auto",
 }));
+export const StyledNavbarResponsive = styled(Grid)(({ theme }) => ({
+  width: "400px",
+  border: `1px solid ${theme.palette.primary.dark}`,
+  margin: "auto",
+  borderRadius: "10px",
+}));
+
 export const StyledLink = styled(Link)(({ theme }) => ({
-  my: 2,
   color: "#212832",
-  margin: "15px",
+  paddingLeft: "1.5rem",
+  wrapContent: "nowrap",
+  lineHeight: "20px",
   textDecoration: "none",
-  "&:hover":{
-    cursor:"pointer",
-    color:`${theme.palette.primary.main}`,
-  }
+  fontFamily: ["monospace", "cursive"],
+  "&:hover": {
+    cursor: "pointer",
+    color: `${theme.palette.primary.main}`,
+  },
 }));
