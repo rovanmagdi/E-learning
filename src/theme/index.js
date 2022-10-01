@@ -12,7 +12,7 @@ let theme  = createTheme({
     secondary: {
       main: "#198754",
       light:'#ffff',
-      dark:"#373B40"
+      dark:"#00000"
 
     },
     

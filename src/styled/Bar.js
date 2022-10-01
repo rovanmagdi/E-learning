@@ -11,7 +11,7 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
   margin: "auto",
 }));
 export const StyledNavbarResponsive = styled(Grid)(({ theme }) => ({
-  width: "400px",
+  width: "500px",
   border: `1px solid ${theme.palette.primary.dark}`,
   margin: "auto",
   borderRadius: "10px",
