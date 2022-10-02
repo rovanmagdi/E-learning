@@ -5,7 +5,7 @@ import React from "react";
 function ComponentContactSmall({ contact, icon }) {
   return (
     <Typography
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{ display: "flex", alignItems: "center" }}
     >
       <Typography sx={{ color: "#198754", paddingTop: "5px" }}>
         {icon}
