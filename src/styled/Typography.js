@@ -32,3 +32,10 @@ export const StyledBlackTxt = styled(Typography)(({ theme }) => ({
   display: "inline-block",
 
   }));
+
+  //Footer
+  export const StyledtitleFooter = styled(Typography)(({ theme }) => ({
+  
+    fontWeight: "bold",fontSize: "22px",
+    marginBottom: "25px" 
+    }));

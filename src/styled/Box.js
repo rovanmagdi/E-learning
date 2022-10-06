@@ -61,7 +61,7 @@ export const CoverTxtBox = styled(Box)(({ theme }) => ({
   left: "6%",
 }));
 
-//footer
+//Footer
 export const StyledFooterImage = styled(Box)(({ theme }) => ({
   width: "100px",
   // left: "0px",
@@ -78,4 +78,12 @@ export const StyledFooterImage = styled(Box)(({ theme }) => ({
       transform: "translateY(-10px);",
     },
   },
+}));
+
+export const StyledFooterSocailMedai = styled(Box)(({ theme }) => ({
+  display: "flex",
+                  aligns: "center",
+                  justifyContent: "space-between",
+                  width: "40%",
+                  marginTop: "12px",
 }));
