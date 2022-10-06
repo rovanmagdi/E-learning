@@ -10,7 +10,7 @@ export const StyledFooter = styled(Stack)(({ theme }) => ({
 }));
 export const StyledFooterImage = styled(Box)(({ theme }) => ({
   width: "100px",
-  left: "40px",
+  left: "0px",
   top: "50px",
   position: "absolute",
   animation: "down 0.8s infinite alternate",

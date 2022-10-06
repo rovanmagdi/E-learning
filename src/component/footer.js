@@ -118,11 +118,12 @@ const Footer = () => {
         </Grid>
       </Grid>
       </Container>
-      {/* <StyledFooterImage
+      <StyledFooterImage
+      sx={{left:0}}
         component="img"
         src="https://htmldemo.net/edule/eduLe/assets/images/shape/shape-22.png"
         
-      /> */}
+      />
     </StyledFooter>
   );
 };

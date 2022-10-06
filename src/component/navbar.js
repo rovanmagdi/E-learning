@@ -18,44 +18,69 @@ const Navbar = () => {
   // const [spacing, setSpacing] = React.useState(2);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("976"));
-  const [navColor, setnavColor] = React.useState("red");
+  const [navColor, setnavColor] = React.useState("transparent");
+  const [navPosition, setnavPosition] = React.useState("absolute");
+  const [navTop, setnavTop] = React.useState("40");
+  const [navTransition, setnavTransition] = React.useState("1");
+
+  const [navBorder, setnavBorder] = React.useState("rgba(48,146,85,0.25)");
+
   const listenScrollEvent = () => {
-    window.scrollX > 50 ? setnavColor("red") : setnavColor("green");
+    window.scrollY > 80 ? setnavColor("#ffff") : setnavColor("transparent");
+    window.scrollY > 80 ? setnavPosition("fixed") : setnavPosition("absolute");
+    window.scrollY > 80 ? setnavTop("0") : setnavTop("40");
+    window.scrollY > 80 ? setnavBorder("transparent") : setnavBorder("rgba(48,146,85,0.25)");
+    window.scrollY > 80 ? setnavTransition("1") : setnavTransition("2");
+
   };
   React.useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
+
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
 
   return (
-    <Grid container item xs={12} spacing={0} sx={{position:"sticky",top:"0",backgroundColor:{ navColor}}}>
+    <Grid
+      container
+      item
+      xs={12}
+      spacing={0}
+      sx={{
+        zIndex: "3",
+        backgroundColor: `${navColor}`,
+        position: `${navPosition}`,
+        top: `${navTop}` ,
+        transition: `${navPosition} 1s`
+      }}
+    >
       {matches ? (
         <>
-          <Container >
-            <StyledNavbar   container spacing={3}>
-              <Grid  xs={2}>
+          <Container>
+            <StyledNavbar
+              container
+              spacing={3}
+              sx={{ border: `1px solid ${navBorder}` }}
+            >
+              <Grid xs={2}>
                 <Link
                   component="img"
                   src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
-                  sx={{ width: "160px", height: "40px" ,marginLeft:"20px"}}
+                  sx={{ width: "160px", height: "40px", marginLeft: "20px" }}
                 />
               </Grid>
-              <Grid   xs={7}>
-                <Box component="div" sx={{fontSize:"18px"}}>
+              <Grid xs={7}>
+                <Box component="div" sx={{ fontSize: "18px" }}>
                   {pages.map((page) => (
                     <StyledLink key={page}>{page}</StyledLink>
                   ))}
                 </Box>
               </Grid>
-              <Grid  xs={3} >
-               
-                  <StyledLink>Sign In</StyledLink>
-                  <StyledButton>Sign up</StyledButton>
-              
+              <Grid xs={3}>
+                <StyledLink>Sign In</StyledLink>
+                <StyledButton>Sign up</StyledButton>
               </Grid>
-             
             </StyledNavbar>
           </Container>
         </>
