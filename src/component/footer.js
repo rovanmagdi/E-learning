@@ -1,18 +1,16 @@
 import { LocalPhoneOutlined } from "@mui/icons-material";
-import { Stack, Grid, Link, Box,Typography } from "@mui/material";
+import { Stack, Grid, Link, Box, Typography, TextField } from "@mui/material";
 
 import React from "react";
 import { StyledFooter, StyledFooterImage } from "../styled/Footer";
 import ComponentContactSmall from "./componentContactSmall";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import List from "@mui/material/List";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import { Container } from "@mui/system";
+
 const Footer = () => {
   return (
     <StyledFooter>
@@ -20,9 +18,10 @@ const Footer = () => {
         component="img"
         src="https://htmldemo.net/edule/eduLe/assets/images/shape/shape-21.png"
       />
-      <Grid container spacing={2} sx={{ width: "800px", margin: "auto" }}>
-        <Grid item xs={4}>
+      <Container>
 
+      <Grid item container spacing={2} xs={12} sx={{  margin: "auto" }}>
+        <Grid  xs={4}>
           <Link
             component="img"
             src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
@@ -30,10 +29,10 @@ const Footer = () => {
           />
 
           <Stack sx={{ marginBottom: "18px" }}>
-            <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
+            <Typography component={'span'} variant={'body2'}sx={{ fontSize: "22px", fontWeight: "bold" }} >
               Caribbean Ct
             </Typography>
-            <Typography sx={{ fontSize: "15px" }}>
+            <Typography component={'span'} variant={'body2'} sx={{ fontSize: "15px" }}>
               Haymarket, Virginia (VA).{" "}
             </Typography>
           </Stack>
@@ -48,39 +47,81 @@ const Footer = () => {
               icon={<EmailOutlinedIcon />}
             />
           </Stack>
+          <Stack>
+            <Typography
+              sx={{
+                display: "flex",
+                aligns: "center",
+                justifyContent: "space-between",
+                width: "40%",
+                marginTop:"12px"
+              }}
+            >
+              <FacebookIcon sx={{ color: "#00000", height: "20px" }} />
+              <TwitterIcon sx={{ color: "#00000", height: "20px" }} />
+              <InstagramIcon sx={{ color: "#00000", height: "20px" }} />
+            </Typography>
+          </Stack>
         </Grid>
-        <Grid item xs={2}>
-          <Typography sx={{paddingBottom:"25px"}}>Category</Typography>
-          <Box sx={{ width: '100%', maxWidth: 360 }}>
-    
-      
-        <List>
-           {["Creative Writing","Film & Video"].map((page,index)=>
-           {
-            return (<ListItem disablePadding key={index}>
-            <ListItemButton sx={{fontSize:"15px"}}>
-              <ListItemText primary={page}  />
-            </ListItemButton>
-          </ListItem>)
-
-           })}
-          
-          
-        </List>
-    
-    </Box>
+        <Grid  xs={3}>
+          <Typography component={'span'} variant={'body2'}sx={{ paddingBottom: "25px" ,fontWeight:"bold"}}>Category</Typography>
+          <Box sx={{ width: "100%", maxWidth: 360 }}>
+            <List>
+              {[
+                "Creative Writing",
+                "Film & Video",
+                "Graphic Design",
+                "UI/UX Design",
+                "Business Analytics",
+                "Marketing",
+              ].map((page, index) => {
+                return (
+                  <Stack
+                    key={index}
+                    sx={{ paddingTop: "14px", fontSize: "0.8rem" }}
+                  >
+                    {page}
+                  </Stack>
+                );
+              })}
+            </List>
+          </Box>
         </Grid>
-        <Grid item xs={3}>
-          1
+        <Grid  xs={3}>
+        <Typography  component={'span'} variant={'body2'} sx={{ paddingBottom: "25px" ,fontWeight:"bold"}}>Quick Links</Typography>
+          <Box sx={{ width: "100%", maxWidth: 360 }}>
+            <List>
+              {[
+                "Creative Writing",
+                "Film & Video",
+                "Graphic Design",
+                "UI/UX Design",
+                "Business Analytics",
+                "Marketing",
+              ].map((page, index) => {
+                return (
+                  <Stack
+                    key={index}
+                    sx={{ paddingTop: "14px", fontSize: "0.8rem" }}
+                  >
+                    {page}
+                  </Stack>
+                );
+              })}
+            </List>
+          </Box>
         </Grid>
-        <Grid item xs={3}>
-          1
+        <Grid  xs={2}>
+        <Typography  component={'p'} variant={'body2'}sx={{ paddingBottom: "25px" ,fontWeight:"bold"}}>Subscribe</Typography>
+        <Typography  component={'p'} variant={'body2'}sx={{ paddingTop: "14px",fontSize: "0.8rem"}}>Lorem Ipsum has been them an industry printer took a galley make book.</Typography>
+        <TextField id="outlined-basic" label="Outlined"  />
         </Grid>
       </Grid>
+      </Container>
       {/* <StyledFooterImage
         component="img"
         src="https://htmldemo.net/edule/eduLe/assets/images/shape/shape-22.png"
-        sx={{ left: "100px" }}
+        
       /> */}
     </StyledFooter>
   );

@@ -4,10 +4,10 @@ import React from "react";
 
 function ComponentContactSmall({ contact, icon }) {
   return (
-    <Typography
+    <Typography component={'div'} variant={'body2'}
       sx={{ display: "flex", alignItems: "center" }}
     >
-      <Typography sx={{ color: "#198754", paddingTop: "5px" }}>
+      <Typography  component={'div'} variant={'body2'}sx={{ color: "#198754", paddingTop: "5px" }}>
         {icon}
       </Typography>
       <Box
