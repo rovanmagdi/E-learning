@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Grid, Link } from "@mui/material";
 // 705
-
 export const StyledNavbar = styled(Grid)(({ theme }) => ({
   alignItems: "center",
   marginTop:"10px",
