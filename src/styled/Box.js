@@ -60,3 +60,22 @@ export const CoverTxtBox = styled(Box)(({ theme }) => ({
   bottom: "30%",
   left: "6%",
 }));
+
+//footer
+export const StyledFooterImage = styled(Box)(({ theme }) => ({
+  width: "100px",
+  // left: "0px",
+  padding:"30px",
+  top: "50px",
+  position: "absolute",
+  animation: "down 0.8s infinite alternate",
+  "  @keyframes down": {
+    "0%": {
+      transform: "translateY(0)",
+    },
+
+    " 100% ": {
+      transform: "translateY(-10px);",
+    },
+  },
+}));

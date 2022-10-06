@@ -1,16 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 
-import {
-  StyledLink,
-  StyledNavbar,
-  StyledNavbarResponsive,
-} from "../styled/Bar";
+import { StyledNavbar, StyledNavbarResponsive } from "../styled/Grid";
+
 import { StyledButton } from "../styled/Button";
 import { Grid, Link, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TemporaryDrawer from "../component/drawar";
+import { StyledLink } from "../styled/Link";
 
 const pages = ["Home", "All Course", "Pages", "Blog", "Content"];
 
@@ -21,7 +19,6 @@ const Navbar = () => {
   const [navColor, setnavColor] = React.useState("transparent");
   const [navPosition, setnavPosition] = React.useState("absolute");
   const [navTop, setnavTop] = React.useState("40");
-  const [navTransition, setnavTransition] = React.useState("1");
 
   const [navBorder, setnavBorder] = React.useState("rgba(48,146,85,0.25)");
 
@@ -29,9 +26,9 @@ const Navbar = () => {
     window.scrollY > 80 ? setnavColor("#ffff") : setnavColor("transparent");
     window.scrollY > 80 ? setnavPosition("fixed") : setnavPosition("absolute");
     window.scrollY > 80 ? setnavTop("0") : setnavTop("40");
-    window.scrollY > 80 ? setnavBorder("transparent") : setnavBorder("rgba(48,146,85,0.25)");
-    window.scrollY > 80 ? setnavTransition("1") : setnavTransition("2");
-
+    window.scrollY > 80
+      ? setnavBorder("transparent")
+      : setnavBorder("rgba(48,146,85,0.25)");
   };
   React.useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -51,9 +48,9 @@ const Navbar = () => {
         zIndex: "3",
         backgroundColor: `${navColor}`,
         position: `${navPosition}`,
-        top: `${navTop}` ,
-        transition: `${navPosition} 1s`
+        top: `${navTop}`,
       }}
+      timeout={{ enter: 8000 }}
     >
       {matches ? (
         <>

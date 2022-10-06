@@ -2,7 +2,8 @@ import { LocalPhoneOutlined } from "@mui/icons-material";
 import { Stack, Grid, Link, Box, Typography, TextField } from "@mui/material";
 
 import React from "react";
-import { StyledFooter, StyledFooterImage } from "../styled/Footer";
+import { StyledFooter } from "../styled/Stack";
+
 import ComponentContactSmall from "./componentContactSmall";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import List from "@mui/material/List";
@@ -10,6 +11,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Container } from "@mui/system";
+import { StyledFooterImage } from "../styled/Box";
 
 const Footer = () => {
   return (
@@ -49,6 +51,7 @@ const Footer = () => {
           </Stack>
           <Stack>
             <Typography
+            component={'div'} variant={'body2'}
               sx={{
                 display: "flex",
                 aligns: "center",
@@ -113,13 +116,13 @@ const Footer = () => {
         </Grid>
         <Grid  xs={2}>
         <Typography  component={'p'} variant={'body2'}sx={{ paddingBottom: "25px" ,fontWeight:"bold"}}>Subscribe</Typography>
-        <Typography  component={'p'} variant={'body2'}sx={{ paddingTop: "14px",fontSize: "0.8rem"}}>Lorem Ipsum has been them an industry printer took a galley make book.</Typography>
+        <Typography  component={'p'} variant={'body2'}sx={{fontSize: "0.8rem"}}>Lorem Ipsum has been them an industry printer took a galley make book.</Typography>
         <TextField id="outlined-basic" label="Outlined"  />
         </Grid>
       </Grid>
       </Container>
       <StyledFooterImage
-      sx={{left:0}}
+      sx={{right:0}}
         component="img"
         src="https://htmldemo.net/edule/eduLe/assets/images/shape/shape-22.png"
         
