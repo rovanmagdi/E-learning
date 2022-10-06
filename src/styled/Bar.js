@@ -9,6 +9,7 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
   borderRadius: "10px",
   width: "800px",
   margin: "auto",
+  // zIndex:5,
 }));
 export const StyledNavbarResponsive = styled(Grid)(({ theme }) => ({
   width: "500px",

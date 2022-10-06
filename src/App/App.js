@@ -4,6 +4,7 @@ import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
 import Footer from "../component/footer";
+import SignUpPage from '../pages/SignUpPage'
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Navbar />
         {/* <Header /> */}
-        <Footer/>
+        <SignUpPage/>
+        {/* <Footer/> */}
       </ThemeProvider>
     </Box>
   );
