@@ -1,4 +1,3 @@
-
 import Header from "../component/header";
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
@@ -8,6 +7,7 @@ import NavbarTop from "../component/navbarTop";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import SignUpPage from "../pages/SignUpPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const themeResponsive = useTheme();
@@ -25,40 +25,17 @@ function App() {
           <Navbar />
         </>
       )}
-      <SignUpPage />
+
       {/* <Header /> */}
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p> <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p> <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p> <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
-      <p>,jbhb</p>
+
+      <Routes>
+        <Route path="/" element={<SignUpPage />} />
+
+        <Route path="/signup" element={<SignUpPage />} />
+
+        {/* <Route path="*" element={<NoPage />} /> */}
+      </Routes>
+
       <Footer />
     </ThemeProvider>
   );

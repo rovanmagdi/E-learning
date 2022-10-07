@@ -9,6 +9,8 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TemporaryDrawer from "../component/drawar";
 import { StyledLink } from "../styled/Link";
+import { useNavigate } from "react-router-dom";
+
 
 const pages = ["Home", "All Course", "Pages", "Blog", "Content"];
 
@@ -19,9 +21,8 @@ const Navbar = () => {
   const [navColor, setnavColor] = React.useState("transparent");
   const [navPosition, setnavPosition] = React.useState("absolute");
   const [navTop, setnavTop] = React.useState("40");
-
   const [navBorder, setnavBorder] = React.useState("rgba(48,146,85,0.25)");
-
+  const navigate = useNavigate();
   const listenScrollEvent = () => {
     window.scrollY > 80 ? setnavColor("#ffff") : setnavColor("transparent");
     window.scrollY > 80 ? setnavPosition("fixed") : setnavPosition("absolute");
@@ -29,6 +30,9 @@ const Navbar = () => {
     window.scrollY > 80
       ? setnavBorder("transparent")
       : setnavBorder("rgba(48,146,85,0.25)");
+  };
+  function handleSignUp  (){
+    navigate("/signup")
   };
   React.useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -38,6 +42,7 @@ const Navbar = () => {
     };
   }, []);
 
+  
   return (
     <Grid
       container
@@ -74,18 +79,23 @@ const Navbar = () => {
                   ))}
                 </Box>
               </Grid>
-              <Grid xs={3} >
-                <Box display="flex"justifyContent="flex-end" alignItems="center">
-
-                <StyledLink>Sign In</StyledLink>
-                <StyledButton>Sign up</StyledButton>
+              <Grid xs={3}>
+                <Box
+                  display="flex"
+                  justifyContent="flex-end"
+                  alignItems="center"
+                >
+                  <StyledLink>Sign In</StyledLink>
+                  <StyledButton onClick={() => handleSignUp()}>
+                    Sign up
+                  </StyledButton>
                 </Box>
               </Grid>
             </StyledNavbar>
           </Container>
         </>
       ) : (
-        <StyledNavbarResponsive sx={{  border: `1px solid ${navBorder}`,}}>
+        <StyledNavbarResponsive sx={{ border: `1px solid ${navBorder}` }}>
           <Grid container spacing={2} sx={{ margin: "5px 0px 5px 0px " }}>
             <Grid item xs={8}>
               <Link
