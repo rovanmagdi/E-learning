@@ -168,7 +168,7 @@ const Footer = () => {
         </>
       ) : (
         <>
-          <StyledFooterResponsive sx={{height:"400px"}}>
+          <StyledFooterResponsive >
             <StyledFooterImage
               component="img"
               src="https://htmldemo.net/edule/eduLe/assets/images/shape/shape-21.png"

@@ -10,7 +10,7 @@ export const StyledFooter = styled(Stack)(({ theme }) => ({
   paddingTop:"50px"
 }));
 export const StyledFooterResponsive = styled(Stack)(({ theme }) => ({
-  height: "520px",
+  height: "570px",
   width: "100%",
   backgroundColor: `${theme.palette.primary.light}`,
   position: "relative",
