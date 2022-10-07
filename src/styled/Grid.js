@@ -6,11 +6,11 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
     alignItems: "center",
     marginTop:"20px",
     borderRadius: "10px",
+    // paddingTop:"0"
    
   }));
   export const StyledNavbarResponsive = styled(Grid)(({ theme }) => ({
     width: "90%",
-  
     margin: "auto",
     borderRadius: "10px",
     fontSize:"20px",

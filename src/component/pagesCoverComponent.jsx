@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Avatar, Typography } from "@mui/material";
 import {
   StyledPageCover,
@@ -20,8 +20,13 @@ import Line2 from "../assets/shape-23.webp";
 import UnderLine from "../assets/shape-6.webp";
 import DottedShape from "../assets/shape-8.webp";
 import TxtUnderline from "../assets/shape-6.webp";
+import { useParams } from "react-router";
 
 export default function PagesCoverComponent(props) {
+  let [page, pageState] = useState("");
+  useEffect(() => {
+    pageState(window.location.href.split("/")[3].replace(/%20/g, " "));
+  }, []);
   return (
     <>
       <StyledPageCover>
@@ -31,7 +36,7 @@ export default function PagesCoverComponent(props) {
             position: "absolute",
             bottom: "0",
             right: "0",
-            height: {lg:"100%",md:'70%',sm:'70%',xs:'70%'},
+            height: { lg: "100%", md: "70%", sm: "70%", xs: "70%" },
           }}
           src={Line}
         />
@@ -39,8 +44,8 @@ export default function PagesCoverComponent(props) {
         <Avatar
           src={Author}
           sx={{
-            width: {lg:'15%',md:'16%',sm:'16%',xs:'16%'},
-            height: {lg:'33%',md:'30%',sm:'25%',xs:'25%'},
+            width: { lg: "15%", md: "16%", sm: "16%", xs: "16%" },
+            height: { lg: "33%", md: "30%", sm: "25%", xs: "25%" },
             position: "absolute",
             bottom: "15%",
             right: "12%",
@@ -51,10 +56,10 @@ export default function PagesCoverComponent(props) {
         <Box
           component="img"
           sx={{
-            width: '8%',
+            width: "8%",
 
             position: "absolute",
-            bottom: {lg:"43%",md:"43%",sm:'37%',xs:'37%'},
+            bottom: { lg: "43%", md: "43%", sm: "37%", xs: "37%" },
             right: "17%",
             animation: "forward 2s infinite alternate",
             "  @keyframes forward": {
@@ -102,7 +107,7 @@ export default function PagesCoverComponent(props) {
             position: "absolute",
             bottom: "0",
             left: "0",
-            height: {lg:"28%",md:'22%',sm:'17%',xs:'10%'},
+            height: { lg: "28%", md: "22%", sm: "17%", xs: "10%" },
           }}
           src={Line2}
         />
@@ -110,7 +115,7 @@ export default function PagesCoverComponent(props) {
         <Box
           component="img"
           sx={{
-            width: '8%',
+            width: "8%",
 
             position: "absolute",
             top: "30%",
@@ -123,16 +128,26 @@ export default function PagesCoverComponent(props) {
           src={DottedShape}
         />
         <CoverTxtBox>
-            <Box sx={{position:'relative'}} >
-            <Typography sx={{fontSize:'typography.caption.textSize'}}>  <StyledBlackTxt>Home // </StyledBlackTxt>{" "}
-            <StyledGreenTxt>{props.firstWord}</StyledGreenTxt></Typography>
+          <Box sx={{ position: "relative" }}>
+            <Typography sx={{ fontSize: "typography.caption.textSize" }}>
+              {" "}
+              <StyledBlackTxt>Home // </StyledBlackTxt>{" "}
+              <StyledGreenTxt>{page}</StyledGreenTxt>
+            </Typography>
             <StyledPageTitle>
-            <StyledBlackTxt>{props.firstWord}</StyledBlackTxt>{" "}
-            <StyledGreenTxt>{props.secondWord}</StyledGreenTxt>
-          </StyledPageTitle>
-          <Box component='img' src={TxtUnderline} sx={{position:'absolute',bottom:'-8px',right:'0',width:'50%'}}>
-
-          </Box>
+              <StyledBlackTxt>{props.firstWord}</StyledBlackTxt>{" "}
+              <StyledGreenTxt>{props.secondWord}</StyledGreenTxt>
+            </StyledPageTitle>
+            <Box
+              component="img"
+              src={TxtUnderline}
+              sx={{
+                position: "absolute",
+                bottom: "-8px",
+                right: "0",
+                width: "50%",
+              }}
+            ></Box>
           </Box>
         </CoverTxtBox>
       </StyledPageCover>

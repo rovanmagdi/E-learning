@@ -7,7 +7,9 @@ import NavbarTop from "../component/navbarTop";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import SignUpPage from "../pages/SignUpPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CoursesPage from "../pages/CoursesPage";
+
+import {  Route, Routes } from "react-router-dom";
 
 function App() {
   const themeResponsive = useTheme();
@@ -32,6 +34,10 @@ function App() {
         <Route path="/" element={<SignUpPage />} />
 
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/All Courses" element={<CoursesPage />} />
+        <Route path="/:page" element={<CoursesPage />} />
+
+
 
         {/* <Route path="*" element={<NoPage />} /> */}
       </Routes>

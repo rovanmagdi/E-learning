@@ -11,8 +11,7 @@ import TemporaryDrawer from "../component/drawar";
 import { StyledLink } from "../styled/Link";
 import { useNavigate } from "react-router-dom";
 
-
-const pages = ["Home", "All Course", "Pages", "Blog", "Content"];
+const pages = ["Home", "All Courses", "Pages", "Blog", "Content"];
 
 const Navbar = () => {
   // const [spacing, setSpacing] = React.useState(2);
@@ -31,9 +30,13 @@ const Navbar = () => {
       ? setnavBorder("transparent")
       : setnavBorder("rgba(48,146,85,0.25)");
   };
-  function handleSignUp  (){
-    navigate("/signup")
-  };
+  function handleSignUp() {
+    navigate("/signup");
+  }
+  function handleLinks(page) {
+    navigate(`/${page}`);
+    console.log(page);
+  }
   React.useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
 
@@ -42,7 +45,6 @@ const Navbar = () => {
     };
   }, []);
 
-  
   return (
     <Grid
       container
@@ -55,32 +57,35 @@ const Navbar = () => {
         position: `${navPosition}`,
         top: `${navTop}`,
       }}
-      timeout={{ enter: 8000 }}
     >
       {matches ? (
         <>
+  
           <Container>
             <StyledNavbar
               container
-              spacing={3}
-              sx={{ border: `1px solid ${navBorder}` }}
+              item
+              spacing={0}
+              xs={12}
+              sx={{ alignItems: "center", border: `1px solid ${navBorder} ` }}
             >
-              <Grid xs={3}>
-                <Link
+              <Grid item xs={3}  sx={{ fontSize: "22px" }}>
+              <Link
                   component="img"
                   src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
-                  sx={{ width: "160px", height: "40px", marginLeft: "20px" }}
-                />
+                  sx={{  marginLeft: "20px"}}
+                /> 
               </Grid>
-              <Grid xs={6}>
-                <Box component="div" sx={{ fontSize: "18px" }}>
+              <Grid item xs={5} >
+              <Box component="div" sx={{ fontSize: "22px" }}>
                   {pages.map((page) => (
-                    <StyledLink key={page}>{page}</StyledLink>
+                    <StyledLink key={page} onClick={()=>handleLinks(page)}>{page}</StyledLink>
                   ))}
                 </Box>
               </Grid>
-              <Grid xs={3}>
-                <Box
+
+              <Grid item xs={4} >
+              <Box
                   display="flex"
                   justifyContent="flex-end"
                   alignItems="center"
