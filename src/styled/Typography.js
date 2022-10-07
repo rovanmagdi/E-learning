@@ -39,3 +39,9 @@ export const StyledBlackTxt = styled(Typography)(({ theme }) => ({
     fontWeight: "bold",fontSize: "22px",
     marginBottom: "25px" 
     }));
+    export const StyledtitleFooterResponsive = styled(Typography)(({ theme }) => ({
+  
+      fontWeight: "bold",fontSize: "22px",
+      paddingBottom: "55px" ,
+     
+      }));

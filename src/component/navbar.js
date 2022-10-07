@@ -60,29 +60,32 @@ const Navbar = () => {
               spacing={3}
               sx={{ border: `1px solid ${navBorder}` }}
             >
-              <Grid xs={2}>
+              <Grid xs={3}>
                 <Link
                   component="img"
                   src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
                   sx={{ width: "160px", height: "40px", marginLeft: "20px" }}
                 />
               </Grid>
-              <Grid xs={7}>
+              <Grid xs={6}>
                 <Box component="div" sx={{ fontSize: "18px" }}>
                   {pages.map((page) => (
                     <StyledLink key={page}>{page}</StyledLink>
                   ))}
                 </Box>
               </Grid>
-              <Grid xs={3}>
+              <Grid xs={3} >
+                <Box display="flex"justifyContent="flex-end" alignItems="center">
+
                 <StyledLink>Sign In</StyledLink>
                 <StyledButton>Sign up</StyledButton>
+                </Box>
               </Grid>
             </StyledNavbar>
           </Container>
         </>
       ) : (
-        <StyledNavbarResponsive>
+        <StyledNavbarResponsive sx={{  border: `1px solid ${navBorder}`,}}>
           <Grid container spacing={2} sx={{ margin: "5px 0px 5px 0px " }}>
             <Grid item xs={8}>
               <Link

@@ -34,7 +34,7 @@ export const StyledButtonFooter = styled(Button)(({ theme }) => ({
   fontWeight: "bold",
   marginTop: "20px",
   color: ` ${theme.palette.secondary.light}`,
-  borderRadius: "15px",
+  borderRadius: "12px",
   "&:hover": {
     backgroundColor: ` ${theme.palette.secondary.main}`,
   },
