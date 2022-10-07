@@ -69,14 +69,14 @@ const Navbar = () => {
               xs={12}
               sx={{ alignItems: "center", border: `1px solid ${navBorder} ` }}
             >
-              <Grid item xs={3}  sx={{ fontSize: "22px" }}>
+              <Grid item xs={3} md={3} sx={{ fontSize: "22px" }}>
               <Link
                   component="img"
                   src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"
                   sx={{  marginLeft: "20px"}}
                 /> 
               </Grid>
-              <Grid item xs={5} >
+              <Grid item xs={5} md={6}>
               <Box component="div" sx={{ fontSize: "22px" }}>
                   {pages.map((page) => (
                     <StyledLink key={page} onClick={()=>handleLinks(page)}>{page}</StyledLink>
@@ -84,7 +84,7 @@ const Navbar = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={4} >
+              <Grid item xs={4} md={3}>
               <Box
                   display="flex"
                   justifyContent="flex-end"

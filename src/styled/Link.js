@@ -3,7 +3,7 @@ import { Link } from "@mui/material";
 //navbar
 export const StyledLink = styled(Link)(({ theme }) => ({
     color: "#212832",
-    paddingLeft: "3%",
+    paddingLeft: "28px",
     // lineHeight: "20px",
     textDecoration: "none",
     fontSize:"20px",
