@@ -15,3 +15,11 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
     borderRadius: "10px",
     fontSize:"20px",
   }));
+  //Courses
+  export const StyledNavCourses = styled(Grid)(({ theme }) => ({
+     backgroundColor: `${theme.palette.primary.light}`,
+     padding:"40px",
+     marginTop:"50px",
+     borderRadius:"15px"
+   
+  }));

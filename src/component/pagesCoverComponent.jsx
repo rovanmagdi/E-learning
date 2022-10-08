@@ -20,7 +20,7 @@ import Line2 from "../assets/shape-23.webp";
 import UnderLine from "../assets/shape-6.webp";
 import DottedShape from "../assets/shape-8.webp";
 import TxtUnderline from "../assets/shape-6.webp";
-import { useParams } from "react-router";
+
 
 export default function PagesCoverComponent(props) {
   let [page, pageState] = useState("");

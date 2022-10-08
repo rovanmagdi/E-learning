@@ -87,3 +87,11 @@ export const StyledFooterSocailMedai = styled(Box)(({ theme }) => ({
                   width: "40%",
                   marginTop: "12px",
 }));
+//Courses
+export const StyledBoxSearch = styled(Box)(({ theme }) => ({
+  backgroundColor:`${theme.palette.primary.main}`,
+  padding:"8px",
+  borderRadius:"5px",
+  color:`${theme.palette.secondary.light}`
+
+}));
