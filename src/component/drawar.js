@@ -67,8 +67,8 @@ export default function TemporaryDrawer({ anchor }) {
       <List>
         {["Home", "All Courses", "Pages", "Blog", "Contact"].map(
           (text, index) => (
-            <Box>
-              <ListItem key={text} disablePadding>
+            <Box key={index}>
+              <ListItem  disablePadding>
                 <ListItemButton sx={{ height: "23px" }}>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -81,6 +81,7 @@ export default function TemporaryDrawer({ anchor }) {
         )}
       </List>
       <Typography
+      component={'div'} variant={'body2'}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <FacebookIcon

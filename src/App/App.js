@@ -1,13 +1,15 @@
-import { Box } from "@mui/system";
-import Header from "../component/header";
+// import Header from "../component/header";
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
 import Footer from "../component/footer";
-import NavbarTop from "../component/navbar-top";
+import NavbarTop from "../component/navbarTop";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import SignUpPage from '../pages/SignUpPage'
+import SignUpPage from "../pages/SignUpPage";
+import CoursesPage from "../pages/CoursesPage";
+
+import {  Route, Routes } from "react-router-dom";
 
 function App() {
   const themeResponsive = useTheme();
@@ -27,10 +29,19 @@ function App() {
       )}
 
       {/* <Header /> */}
-     <SignUpPage/>
+
+      <Routes>
+        <Route path="/" element={<SignUpPage />} />
+
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/All Courses" element={<CoursesPage />} />
+        <Route path="/:page" element={<CoursesPage />} />
 
 
-     
+
+        {/* <Route path="*" element={<NoPage />} /> */}
+      </Routes>
+
       <Footer />
     </ThemeProvider>
   );

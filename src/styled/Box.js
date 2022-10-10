@@ -60,3 +60,38 @@ export const CoverTxtBox = styled(Box)(({ theme }) => ({
   bottom: "30%",
   left: "6%",
 }));
+
+//Footer
+export const StyledFooterImage = styled(Box)(({ theme }) => ({
+  width: "100px",
+  // left: "0px",
+  padding:"30px",
+  top: "50px",
+  position: "absolute",
+  animation: "down 0.8s infinite alternate",
+  "  @keyframes down": {
+    "0%": {
+      transform: "translateY(0)",
+    },
+
+    " 100% ": {
+      transform: "translateY(-10px);",
+    },
+  },
+}));
+
+export const StyledFooterSocailMedai = styled(Box)(({ theme }) => ({
+  display: "flex",
+                  aligns: "center",
+                  justifyContent: "space-between",
+                  width: "40%",
+                  marginTop: "12px",
+}));
+//Courses
+export const StyledBoxSearch = styled(Box)(({ theme }) => ({
+  backgroundColor:`${theme.palette.primary.main}`,
+  padding:"8px",
+  borderRadius:"5px",
+  color:`${theme.palette.secondary.light}`
+
+}));
