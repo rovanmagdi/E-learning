@@ -7,6 +7,7 @@ export default function Courses() {
     <>
     <PagesCoverComponent firstWord='My' secondWord='Courses'/>
     <CoursesTab/>
+
     </>
   )
 }
