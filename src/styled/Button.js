@@ -39,3 +39,62 @@ export const StyledButtonFooter = styled(Button)(({ theme }) => ({
     backgroundColor: ` ${theme.palette.secondary.main}`,
   },
 }));
+
+
+
+//regester
+export const StyledGreenButton = styled(Button)(({ theme }) => ({
+  // backgroundColor:'#309255',
+  marginTop:'20px',
+  borderRadius:'10px',
+  padding:'10px',
+  // color:'#309255',
+  // border:'1px solid #309255',
+  boxShadow:'none',
+  textTransform:'capitalize',
+  fontWeight:'bold',
+  fontSize:'1.3em',
+  // transition: 'backgroundColor .5s shutter-out-horizontal',
+  backgroundImage:' linear-gradient(#212832, #212832), linear-gradient(#309255, #309255)',
+  backgroundSize:' 0 100%, auto',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  transition: 'all .3s ease-out',
+
+  "&:hover": {
+    // backgroundColor: `#000`,
+    color:' #fff',
+    backgroundSize:' 100% 100%, auto',
+   
+  }, [theme.breakpoints.down('md')]: {
+    fontSize:'1em',
+  },[theme.breakpoints.down('sm')]: {
+    fontSize:'.7em',
+  }
+}));
+
+export const StyledLightGreenButton = styled(Button)(({ theme }) => ({
+  backgroundColor:'#E7F8EE',
+  marginTop:'20px',
+  borderRadius:'10px',
+  padding:'10px',
+  color:'#309255',
+  border:'1px solid rgba(48,146,85,.2)',
+  boxShadow:'none',
+  textTransform:'capitalize',
+  fontWeight:'bold',
+  fontSize:'1.3em',
+  transition: 'all .3s ease-out',
+  "&:hover": {
+    // backgroundColor: `#000`,
+    color:' white',
+    backgroundColor:'#309255',
+   
+  },
+  [theme.breakpoints.down('md')]: {
+    fontSize:'1em',
+  },[theme.breakpoints.down('sm')]: {
+    fontSize:'.7em',
+  }
+
+}));
