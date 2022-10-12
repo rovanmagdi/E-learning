@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import {} from "@mui/system";
 import React, { useEffect, useState } from "react";
-import MediaCard from "../component/cardComponent";
+import MediaCard from "./cardComponent";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:4000/courses";

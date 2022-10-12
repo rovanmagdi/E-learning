@@ -7,7 +7,7 @@ import { StyledButton } from "../styled/Button";
 import { Grid, Link, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import TemporaryDrawer from "../component/drawar";
+import TemporaryDrawer from "./drawar";
 import { StyledLink } from "../styled/Link";
 import { useNavigate } from "react-router-dom";
 

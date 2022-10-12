@@ -10,7 +10,7 @@ import {
 
 import { StyledFormBox } from "../styled/Box";
 import { FormControl, TextField, Button } from "@mui/material";
-import { StyledFormInput } from "../styled/TextFiled.js";
+import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
 import { useState, useCallback, useContext } from "react";
 import Joi from "joi";
