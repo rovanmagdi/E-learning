@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
+//for all pages
 export const StyledPageCover = styled(Box)(({ theme }) => ({
   minHeight: "700px",
   width: "100%",
@@ -58,7 +59,7 @@ export const CoverTxtBox = styled(Box)(({ theme }) => ({
   position: "absolute",
   display: "inline-block",
   bottom: "30%",
-  left: "6%",
+  
 }));
 
 //Footer
@@ -94,4 +95,51 @@ export const StyledBoxSearch = styled(Box)(({ theme }) => ({
   borderRadius:"5px",
   color:`${theme.palette.secondary.light}`
 
+}));
+
+
+//signup page
+export const StyledRegesterPhotoBox = styled(Box)(({ theme }) => ({
+  backgroundColor:'#E7F8EE',
+  borderRadius:'10px',
+  position:'relative',
+  paddingTop:'50px',
+  textAlign:'center',
+ 
+}));
+
+export const StyledRegesterCircularBox = styled(Box)(({ theme }) => ({
+  width: "30%",
+  height: "27%",
+  //  textAlign: 'center',
+  borderRadius: "50%",
+  padding: "40px",
+  backgroundColor: "#309255",
+  position: "absolute",
+  top: "10%",
+  left: "25%",
+  textAlign: "left",
+  [theme.breakpoints.down('md')]: {
+    // left: "25%",
+  // height: "23%",
+  padding: "20px",
+
+
+  },
+  
+}));
+
+export const StyledFormBox = styled(Box)(({ theme }) => ({
+ 
+  textAlign: "center",
+  padding:'20px 70px 0px 70px',
+  // [theme.breakpoints.down('md')]: {
+  //   width: "60%",
+  //  height: "60%",
+  // },
+  [theme.breakpoints.down('md')]: {
+    padding:'0px',
+
+  },
+  
 }));

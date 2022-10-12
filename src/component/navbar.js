@@ -33,6 +33,9 @@ const Navbar = () => {
   function handleSignUp() {
     navigate("/signup");
   }
+  function handleSignIn() {
+    navigate("/login");
+  }
   function handleLinks(page) {
     navigate(`/${page}`);
     console.log(page);
@@ -91,7 +94,7 @@ const Navbar = () => {
                   justifyContent="flex-end"
                   alignItems="center"
                 >
-                  <StyledLink>Sign In</StyledLink>
+                  <StyledLink onClick={() => handleSignIn()}>Sign In</StyledLink>
                   <StyledButton onClick={() => handleSignUp()}>
                     Sign up
                   </StyledButton>

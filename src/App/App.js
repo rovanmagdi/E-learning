@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import SignUpPage from "../pages/SignUpPage";
 import CoursesPage from "../pages/CoursesPage";
+import LoginPage from '../pages/LoginPage'
 
 import {  Route, Routes } from "react-router-dom";
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<SignUpPage />} />
 
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/All Courses" element={<CoursesPage />} />
         <Route path="/:page" element={<CoursesPage />} />
 
