@@ -12,11 +12,22 @@ import Typography from "@mui/material/Typography";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import StarIcon from "@mui/icons-material/Star";
+import Rating from "@mui/material/Rating";
+import { StyledCardCourse } from "../styled/Card";
 
-export default function MediaCard({imageBase,author,imageAuthor,description,complete}) {
+export default function MediaCard({
+  imageBase,
+  author,
+  imageAuthor,
+  description,
+  complete,
+}) {
+  const [value, setValue] = React.useState(0);
+
   return (
-    <Card sx={{ maxWidth: 345, position: "relative" }}>
+    <StyledCardCourse
+     
+    >
       <CardHeader
         sx={{ position: "absolute", right: "0", margin: "20px" }}
         action={
@@ -63,14 +74,22 @@ export default function MediaCard({imageBase,author,imageAuthor,description,comp
           {description}
         </Typography>
         <Typography variant="body2" sx={{ margin: "10px 0px 0px 0px" }}>
-          {complete} Complete
+          {complete} % Complete
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="share">
-          <StarIcon sx={{ color: "#ffba00" }} />
+          {/* <StarIcon sx={{ color: "#ffba00" }} />
+           */}
+          <Rating
+            name="simple-controlled"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+          />
         </IconButton>
       </CardActions>
-    </Card>
+    </StyledCardCourse>
   );
 }

@@ -1,0 +1,89 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-01.jpg",
+      "author": "Ohula Malsh",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg",
+      "description": "Data Science and Machine Learning with Python - Hands On!",
+      "complete": "38",
+      "rating": "0"
+    },
+    {
+      "id": "2",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "description": "Create Amazing Color Schemes for Your UX Design Projects",
+      "complete": "20",
+      "rating": "2"
+    },
+    {
+      "id": "3",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
+      "author": "Rose Simmons ",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
+      "description": "Culture & Leadership: Strategies for a Successful Business",
+      "complete": "15",
+      "rating": "2"
+    },
+    {
+      "id": "4",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "author": "Jason Williams",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "description": "Build Brand Into Marketing: Tackling the New Marketing Landscape",
+      "complete": "80",
+      "rating": "2"
+    },
+    {
+      "id": "5",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "description": "Create Amazing Color Schemes for Your UX Design Projects",
+      "complete": "20",
+      "rating": "2"
+    },
+    {
+      "1": "",
+      "id": "_yFae-0"
+    },
+    {
+      "2": "",
+      "id": "7SL7TeR"
+    },
+    {
+      "rating": "1",
+      "id": "xuZeibx"
+    },
+    {
+      "rating": "2",
+      "id": "zfw51YK"
+    },
+    {
+      "rating": "1",
+      "id": "cWFexHn"
+    },
+    {
+      "rating": "2",
+      "id": "6it3ZEK"
+    },
+    {
+      "rating": "_yFae-0",
+      "id": "yfJAmwl"
+    },
+    {
+      "rating": "5",
+      "id": "1LfLky6"
+    },
+    {
+      "rating": "2",
+      "id": "QPrNF4d"
+    },
+    {
+      "rating": "2",
+      "id": "QwEd4p-"
+    }
+  ]
+}
