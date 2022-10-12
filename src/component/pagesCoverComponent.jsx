@@ -11,7 +11,7 @@ import {
   StyledBlackTxt,
   StyledGreenTxt,
 } from "../styled/Typography";
-
+import { Container } from "@mui/system";
 import Line from "../assets/shape-24.webp";
 import Author from "../assets/author-11.webp";
 import Arrow from "../assets/shape-5.webp";
@@ -127,8 +127,9 @@ export default function PagesCoverComponent(props) {
           }}
           src={DottedShape}
         />
+        <Container>
         <CoverTxtBox>
-          <Box sx={{ position: "relative" }}>
+          <Box sx={{ position: "relative" }} >
             <Typography sx={{ fontSize: "typography.caption.textSize" }}>
               {" "}
               <StyledBlackTxt>Home // </StyledBlackTxt>{" "}
@@ -150,6 +151,8 @@ export default function PagesCoverComponent(props) {
             ></Box>
           </Box>
         </CoverTxtBox>
+        </Container>
+       
       </StyledPageCover>
     </>
   );
