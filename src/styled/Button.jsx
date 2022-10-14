@@ -98,3 +98,29 @@ export const StyledLightGreenButton = styled(Button)(({ theme }) => ({
   }
 
 }));
+//Not Found
+
+export const StyledButtonNotFound = styled(Button)(({ theme }) => ({
+  marginTop:'20px',
+  borderRadius:'10px',
+  padding:'15px 25px 15px 25px',
+  boxShadow:'none',
+  color:"white",
+  textTransform:'capitalize',
+  backgroundImage:' linear-gradient(#212832, #212832), linear-gradient(#309255, #309255)',
+  backgroundSize:' 0 100%, auto',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  transition: 'all .3s ease-out',
+  fontWeight:'bold',
+
+  "&:hover": {
+    color:' #fff',
+    backgroundSize:' 100% 100%, auto',
+   
+  }, [theme.breakpoints.down('md')]: {
+    fontSize:'1em',
+  },[theme.breakpoints.down('sm')]: {
+    fontSize:'.7em',
+  }
+}));

@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 //for all pages
 export const StyledPageCover = styled(Box)(({ theme }) => ({
-  minHeight: "700px",
+  minHeight: "500px",
   width: "100%",
   backgroundColor: "#E7F8EE",
   position: "relative",
@@ -15,8 +15,8 @@ export const StyledPageCover = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledCircularBorder = styled(Box)(({ theme }) => ({
-  width: "8%",
-  height: "19%",
+  width: "10%",
+  height: "20%",
   // textAlign: 'center',
   border: "1px solid rgba(48,146,85,0.2)",
   borderRadius: "50%",
@@ -37,7 +37,7 @@ export const StyledCircularBorder = styled(Box)(({ theme }) => ({
 
 export const StyledCircularBox = styled(Box)(({ theme }) => ({
   width: "70%",
-  height: "70%",
+  height: "100%",
   //  textAlign: 'center',
   borderRadius: "50%",
   padding: "10px",
