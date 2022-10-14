@@ -143,3 +143,21 @@ export const StyledFormBox = styled(Box)(({ theme }) => ({
   },
   
 }));
+
+//
+export const StyledBoxNotFound = styled(Box)(({ theme }) => ({
+  color: `${theme.palette.primary.main}`,"&:before":{
+    position:" absolute",
+    content: `''`,
+    backgroundImage:"url(https://htmldemo.net/edule/eduLe/assets/images/shape/shape-4.png)",
+    backgroundPosition:" center center",
+    backgroundSize:" cover",
+    backgroundRepeat:" no-repeat",
+    width:"260px",
+    height:" 21px",
+    
+    transform:" translateY(300%)",
+
+}
+ 
+}));

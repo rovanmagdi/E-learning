@@ -24,9 +24,4 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
    
   }));
 
-  //Not Found 
-  export const StyledGridNotFound = styled(Grid)(({ theme }) => ({
-   marginTop:"50px"
   
- }));
-

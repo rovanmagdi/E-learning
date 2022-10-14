@@ -69,6 +69,6 @@ export const StyledTypographyNotFound = styled(Typography)(({ theme }) => ({
 
 export const StyledTypographyNotFoundTitle = styled(Typography)(({ theme }) => ({
   fontWeight:"520",
-  fontSize:"3rem",
+  fontSize:"40px",
   marginBottom:"20px"
  }));
