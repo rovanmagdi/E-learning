@@ -35,7 +35,7 @@ const CoursesComponent = () => {
               item
               xs={4}
               key={index}
-              sx={{ marginTop: "50px"  }}
+              sx={{ margin: "50px 0px 50px 0px"  }}
               onClick={() => handleCourse(course.id)}
             
             >
