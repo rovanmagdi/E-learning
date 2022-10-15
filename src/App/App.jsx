@@ -11,7 +11,6 @@ import CoursesPage from "../pages/CoursesPage";
 import LoginPage from '../pages/LoginPage'
 
 import {  Route, Routes } from "react-router-dom";
-import NotFound from "../pages/NotFoundPage";
 
 function App() {
   const themeResponsive = useTheme();
@@ -38,7 +37,11 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/All Courses" element={<CoursesPage />} />
-        <Route path="*" element={<NotFound />} />
+       
+
+
+
+        {/* <Route path="*" element={<NoPage />} /> */}
       </Routes>
 
       <Footer />

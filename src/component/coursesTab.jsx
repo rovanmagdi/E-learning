@@ -3,7 +3,7 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import CoursesComponent from "./coursesComponent";
+import CoursesComponent ,{CoursesContext} from "./coursesComponent";
 import { Container } from "@mui/system";
 import { FormControl, Grid, OutlinedInput, useMediaQuery } from "@mui/material";
 import { StyledNavCourses } from "../styled/Grid";
@@ -12,6 +12,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { StyledBoxSearch } from "../styled/Box";
 import { useTheme } from "@emotion/react";
+
 function TabPanel(props) {
   const { children, value, index } = props;
 
@@ -25,9 +26,11 @@ const CoursesTab = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+
   };
   const handleChangeTxt = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
+
   };
 
   const clickedButtonHandler = (name) => {
@@ -42,6 +45,12 @@ const CoursesTab = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("1199"));
 
+  const state  = React.useContext(CoursesContext);
+
+  React.useEffect(()=>{
+    console.log(state);
+  }
+  )
   return (
     <Container>
       {matches?(<> <StyledNavCourses container item xs={12}>

@@ -1,27 +1,33 @@
 import { Grid } from "@mui/material";
 import {} from "@mui/system";
-import React, { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import MediaCard from "./cardComponent";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:4000/courses";
+
+export const CoursesContext = createContext([]);
 
 const CoursesComponent = () => {
   const [course, setCourse] = useState([]);
   useEffect(() => {
     axios.get(`${BASE_URL}`).then((response) => {
       setCourse(response.data);
-      console.log(response.data);
+    
     });
   }, []);
-  const handleCourse = (data) => {
+  const handleCourse = () => {
     // axios.post(`${BASE_URL}`,{rating:data}).then((response) => {
     //   console.log(data);
+    console.log("ghghgh");
   
     // });
   };
+  
+  
   return (
-    <>
+    <CoursesContext.Provider value={{name:"rovan"}}>
+
       <Grid item container>
         {course.map((course, index) => {
           return (
@@ -38,13 +44,17 @@ const CoursesComponent = () => {
                 author={course.author}
                 imageAuthor={course.imageAuthor}
                 description={course.description}
-                complete={course.complete}
+              
+                id={course.id}
+                rating={course.rating}
+
               />
             </Grid>
           );
         })}
       </Grid>
-    </>
+
+   </CoursesContext.Provider> 
   );
 };
 
