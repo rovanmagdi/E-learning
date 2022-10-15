@@ -11,6 +11,7 @@ import CoursesPage from "../pages/CoursesPage";
 import LoginPage from '../pages/LoginPage'
 
 import {  Route, Routes } from "react-router-dom";
+import NotFound from "../pages/NotFoundPage";
 
 function App() {
   const themeResponsive = useTheme();
@@ -41,7 +42,7 @@ function App() {
 
 
 
-        {/* <Route path="*" element={<NoPage />} /> */}
+        <Route path="*" element={<NotFound/>} />
       </Routes>
 
       <Footer />
