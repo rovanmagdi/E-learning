@@ -19,7 +19,7 @@ const CoursesComponent = () => {
   const handleCourse = () => {
     // axios.post(`${BASE_URL}`,{rating:data}).then((response) => {
     //   console.log(data);
-    console.log("ghghgh");
+ 
   
     // });
   };

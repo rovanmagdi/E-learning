@@ -13,14 +13,16 @@ import { Box } from "@mui/system";
 import Rating from "@mui/material/Rating";
 import { StyledCardCourse } from "../styled/Card";
 import axios from "axios";
+import io from 'socket.io-client';
 
+const socket = io();
 export default function MediaCard({
   id,
   imageBase,
   author,
   imageAuthor,
   description,
-
+  
   rating,
 }) {
   const handleChange = async (event, id) => {
@@ -33,6 +35,7 @@ export default function MediaCard({
       console.log(response.data);
     }
   };
+  
   return (
     <StyledCardCourse>
       <CardHeader
