@@ -32,7 +32,7 @@ const Footer = () => {
             />
             <Container>
               <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={3}>
                   <Link
                     component="img"
                     src="https://htmldemo.net/edule/eduLe/assets/images/logo.png"

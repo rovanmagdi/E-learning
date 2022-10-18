@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 //for all pages
 export const StyledPageCover = styled(Box)(({ theme }) => ({
-  minHeight: "700px",
+  minHeight: "500px",
   width: "100%",
   backgroundColor: "#E7F8EE",
   position: "relative",
@@ -16,8 +16,8 @@ export const StyledPageCover = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledCircularBorder = styled(Box)(({ theme }) => ({
-  width: "8%",
-  height: "19%",
+  width: "10%",
+  height: "20%",
   // textAlign: 'center',
   border: "1px solid rgba(48,146,85,0.2)",
   borderRadius: "50%",
@@ -39,7 +39,7 @@ export const StyledCircularBorder = styled(Box)(({ theme }) => ({
 
 export const StyledCircularBox = styled(Box)(({ theme }) => ({
   width: "70%",
-  height: "70%",
+  height: "100%",
   //  textAlign: 'center',
   borderRadius: "50%",
   padding: "10px",
@@ -201,4 +201,23 @@ export const StyledGetAppCircularShape = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
 
   position: "absolute",
+  
+}));
+
+//
+export const StyledBoxNotFound = styled(Box)(({ theme }) => ({
+  color: `${theme.palette.primary.main}`,"&:before":{
+    position:" absolute",
+    content: `''`,
+    backgroundImage:"url(https://htmldemo.net/edule/eduLe/assets/images/shape/shape-4.png)",
+    backgroundPosition:" center center",
+    backgroundSize:" cover",
+    backgroundRepeat:" no-repeat",
+    width:"260px",
+    height:" 21px",
+    
+    transform:" translateY(300%)",
+
+}
+ 
 }));

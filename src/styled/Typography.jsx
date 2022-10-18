@@ -54,11 +54,14 @@ export const StyledtitleFooterResponsive = styled(Typography)(({ theme }) => ({
   paddingBottom: "55px",
 }));
 
-//regester
+//Register
 export const StyledError = styled(Typography)(({ theme }) => ({
   color: "red",
   textAlign:'left'
 }));
+
+
+
 
 export const StyledWhiteTxt = styled(Typography)(({ theme }) => ({
   color: `#FFFFFF`,
@@ -82,3 +85,15 @@ export const StyledWhiteTitle = styled(Typography)(({ theme }) => ({
     fontSize: "1rem",
   },
 }));
+//Not Found
+export const StyledTypographyNotFound = styled(Typography)(({ theme }) => ({
+ color:`${theme.palette.primary.main}`,
+ fontSize:"22px",
+ marginBottom:"20px"
+}));
+
+export const StyledTypographyNotFoundTitle = styled(Typography)(({ theme }) => ({
+  fontWeight:"520",
+  fontSize:"40px",
+  marginBottom:"20px"
+ }));

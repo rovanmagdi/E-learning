@@ -1,49 +1,44 @@
 {
-    "courses": [
-        {
-            "id": "1",
-            "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-01.jpg",
-            "author": "Ohula Malsh",
-            "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg",
-            "description": "Data Science and Machine Learning with Python - Hands On!",
-            "complete": "38",
-            "rating": "0"
-        },
-        {
-            "id": "2",
-            "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
-            "author": "Pamela Foste",
-            "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
-            "description": "Create Amazing Color Schemes for Your UX Design Projects",
-            "complete": "20",
-            "rating": "2"
-        },
-        {
-            "id": "3",
-            "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
-            "author": "Rose Simmons ",
-            "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
-            "description": "Culture & Leadership: Strategies for a Successful Business",
-            "complete": "15",
-            "rating": "2"
-        },
-        {
-            "id": "4",
-            "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
-            "author": "Jason Williams",
-            "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
-            "description": "Build Brand Into Marketing: Tackling the New Marketing Landscape",
-            "complete": "80",
-            "rating": "2"
-        },
-        {
-            "id": "5",
-            "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
-            "author": "Pamela Foste",
-            "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
-            "description": "Create Amazing Color Schemes for Your UX Design Projects",
-            "complete": "20",
-            "rating": "2"
-        }
-    ]
+  "courses": [
+    {
+      "id": "1",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-01.jpg",
+      "author": "Ohula Malsh",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg",
+      "description": "Data Science and Machine Learning with Python - Hands On!",
+      "rating": "3"
+    },
+    {
+      "id": "2",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "description": "Create Amazing Color Schemes for Your UX Design Projects",
+      "rating": "2"
+    },
+    {
+      "id": "3",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
+      "author": "Rose Simmons ",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
+      "description": "Culture & Leadership: Strategies for a Successful Business",
+      "rating": "5"
+    },
+    {
+      "id": "4",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "author": "Jason Williams",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "description": "Build Brand Into Marketing: Tackling the New Marketing Landscape",
+      "rating": "3"
+    },
+    {
+      "id": "5",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "description": "Create Amazing Color Schemes for Your UX Design Projects",
+      "rating": "1"
+    }
+  ]
 }

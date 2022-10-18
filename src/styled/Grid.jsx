@@ -23,3 +23,5 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
      borderRadius:"15px"
    
   }));
+
+  
