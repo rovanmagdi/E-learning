@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TxtUnderline from "../assets/shape-6.webp";
 import { Box } from "@mui/material";
 import {
@@ -25,25 +25,24 @@ export default function RegisterForm() {
   });
   const [users, setUsers] = useState([]);
   const [errorState, setErrorState] = useState([]);
-  const [isValid, setIsValid] = useState(false);
+  const isValid = useRef(false);
   const { name, email, password, confirmPassword } = user;
-  const [uniqueUserName, setUniqueUserName] = useState(true);
   const BASE_URL = "http://localhost:4200/users";
-  let errors = [];
+  const duplicateName = useRef("");
+
+  const [flag,setFlag] = useState("");
+
 
   useEffect(() => {
     axios.get(`${BASE_URL}`).then((resp) => {
-      setUsers(resp.data) ;
+      setUsers(resp.data);
     });
    
-  },[]);
-
-
+  }, []);
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
     setUser((user) => ({ ...user, [name]: value }));
-    // console.log(user);
   }, []);
 
   const validations = (state) => {
@@ -56,63 +55,53 @@ export default function RegisterForm() {
         .required()
         .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
       password: Joi.string(),
-      //   .required()
-      //   .regex(
-      //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-      //   ),
-      confirmPassword: Joi.any()
+      // .required()
+      // .regex(
+      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+      // ),
+      confirmPassword: Joi.any(),
       // .valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
+  let errors = [];
 
   const handleSubmit = () => {
-
-    // let errors = [];
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
-
     setErrorState(errors);
-    errors.length === 0 ? setIsValid(true) : setIsValid(false);
-    // console.log(errors);
 
-    if (isValid||!uniqueUserName) { //false not add 
+    errors.length === 0 ? (isValid.current = true) : (isValid.current = false);
 
-      console.log(isValid);
-      console.log("is  valid");
+    if (isValid.current) {
+      // console.log(errors);
+      duplicateName.current = users.find((el) => el.name === user.name)?.name;
+      // console.log("is valid");
+      // console.log(duplicateName.current);
+      // console.log(isValid.current);
+    
 
-      console.log(users.length);
-
-      setUniqueUserName(true);
-
-      console.log(uniqueUserName);
-
-
-      users.forEach((element) => {
-        if(element.name === user.name){
-          setUniqueUserName(false)
+      if (!(duplicateName.current)) {
+        
+        console.log("not duplicate name");
        
-        }
-      });
-     
-    }else{
-      console.log("is not valid");
-      console.log(isValid);
-      console.log(users.length);
-
-
-      // localStorage.setItem("user", JSON.stringify(user));
-
-      // axios.post(`${BASE_URL}`, {
-      //   ...user,
-      //   collection: [],
-      //   archive: [],
-      //   wishlist: [],
-      //   cart: [],
-      // });
+        localStorage.setItem("user", JSON.stringify(user));
+        
+        axios.post(`${BASE_URL}`, {
+          ...user,
+          collection: [],
+          archive: [],
+          wishlist: [],
+          cart: [],
+        });
+       
+         
+      }
     }
+    
+   
   };
 
   return (
@@ -152,7 +141,7 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-          {!uniqueUserName ? (
+          {duplicateName.current ? (
             <StyledError>Duplicate user name</StyledError>
           ) : (
             <StyledError></StyledError>
