@@ -12,6 +12,7 @@ import LoginPage from '../pages/LoginPage'
 
 import {  Route, Routes } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage";
+import DetailsCourse from "../pages/DetailsCourses";
 
 function App() {
   const themeResponsive = useTheme();
@@ -33,7 +34,7 @@ function App() {
       {/* <Header /> */}
 
       <Routes>
-        <Route path="/" element={<SignUpPage />} />
+        <Route path="/home" element={<DetailsCourse />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/All Courses" element={<CoursesPage />} />
