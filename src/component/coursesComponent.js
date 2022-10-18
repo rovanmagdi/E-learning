@@ -15,10 +15,10 @@ const CoursesComponent = () => {
     });
   }, []);
   const handleCourse = (data) => {
-    axios.post(`${BASE_URL}`,{rating:data}).then((response) => {
-      console.log(data);
+    // axios.post(`${BASE_URL}`,{rating:data}).then((response) => {
+    //   console.log(data);
   
-    });
+    // });
   };
   return (
     <>
@@ -29,8 +29,7 @@ const CoursesComponent = () => {
               item
               xs={4}
               key={index}
-              sx={{ marginTop: "50px",
-                }}
+              sx={{ marginTop: "50px"  }}
               onClick={() => handleCourse(course.id)}
             
             >

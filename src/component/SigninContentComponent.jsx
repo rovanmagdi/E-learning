@@ -18,7 +18,7 @@ export default function SigninContentComponent() {
           <Grid
             item
             lg={6}
-            md={12}
+            md={6}
             sm={12}
             xs={12}
             alignItems="center"
@@ -30,7 +30,7 @@ export default function SigninContentComponent() {
           <Grid
             item
             lg={6}
-            md={12}
+            md={6}
             sm={12}
             xs={12}
            

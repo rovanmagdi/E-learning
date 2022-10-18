@@ -19,7 +19,7 @@ export default function SignupContentComponent() {
           <Grid
             item
             lg={6}
-            md={12}
+            md={6}
             sm={12}
             xs={12}
             alignItems="center"
@@ -29,7 +29,7 @@ export default function SignupContentComponent() {
             <RegesterPhotoComponent></RegesterPhotoComponent>
            
           </Grid>
-          <Grid item lg={6} md={12} sm={12} xs={12}>
+          <Grid item lg={6} md={6} sm={12} xs={12}>
            <RegisterForm></RegisterForm>
           </Grid>
         </Grid>
