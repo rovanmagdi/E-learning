@@ -1,18 +1,19 @@
 import React from "react";
 import TxtUnderline from "../assets/shape-6.webp";
-import { Box, Avatar, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   StyledSectionTitle,
   StyledBlackTxt,
   StyledGreenTxt,
   StyledError,
 } from "../styled/Typography";
+import axios from "axios";
 
 import { StyledFormBox } from "../styled/Box";
 import { FormControl, TextField, Button } from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback, useContext } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Joi from "joi";
 
 export default function RegisterForm() {
@@ -22,9 +23,21 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
+  const [users, setUsers] = useState([]);
   const [errorState, setErrorState] = useState([]);
   const [isValid, setIsValid] = useState(false);
   const { name, email, password, confirmPassword } = user;
+  const [uniqueUserName, setUniqueUserName] = useState(true);
+  const BASE_URL = "http://localhost:4200/users";
+  // let users = [];
+
+  useEffect(() => {
+    // axios.get(`${BASE_URL}`).then((resp) => {
+    //   users = resp.data;
+      
+    //   // console.log(users);
+    // });
+  });
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
@@ -36,7 +49,7 @@ export default function RegisterForm() {
     const schema = Joi.object({
       name: Joi.string()
         .required()
-        .regex(/^[a-zA-Z\s]*$/),
+        .regex(/^[A-Za-z0-9_-]*$/),
 
       email: Joi.string()
         .required()
@@ -53,21 +66,53 @@ export default function RegisterForm() {
   };
 
   const handleSubmit = () => {
+    // setUniqueUserName(true);
+    // console.log('entered');
+    // let users=[]
     let errors = [];
-
+    axios.get(`${BASE_URL}`).then((resp) => {
+      setUsers(resp.data) ;
+    });
+    // console.log(users);
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
     setErrorState(errors);
-    errors.length===0?setIsValid(true):setIsValid(false);
+    errors.length === 0 ? setIsValid(true) : setIsValid(false);
 
-    if(isValid){
-      localStorage.setItem('user',JSON.stringify(user));
+    if (isValid) {
+      // console.log(uniqueUserName);
+      setUniqueUserName(true);
+      users.forEach((element) => {
+        if(element.name === user.name){
+          setUniqueUserName(false)
+          // console.log('match');
+        }
+        
+      });
+      // console.log({users,user});
+
+      if (uniqueUserName) {
+        // console.log('entered');
+        localStorage.setItem("user", JSON.stringify(user));
+
+        axios.post(`${BASE_URL}`, {
+          ...user,
+          collection: [],
+          archive: [],
+          wishlist: [],
+          cart: [],
+        });
+        
+        // .then(function (response) {
+        //   console.log(response);
+        // })
+        // .catch(function (error) {
+        //   console.log(error.response.data);
+        // });
+      }
     }
-
-
   };
-
 
   return (
     <>
@@ -92,7 +137,7 @@ export default function RegisterForm() {
         <FormControl sx={{ display: "block", my: 4 }}>
           <StyledFormInput
             id="outlined-basic"
-            label="Name"
+            label="User Name"
             variant="outlined"
             name="name"
             value={name}
@@ -100,7 +145,14 @@ export default function RegisterForm() {
             fullWidth
           />
           {errorState.find((el) => el === "name") ? (
-            <StyledError>Full Name contains only letters</StyledError>
+            <StyledError>
+              User name can contains only (letters numbers _ -)
+            </StyledError>
+          ) : (
+            <StyledError></StyledError>
+          )}
+          {!uniqueUserName ? (
+            <StyledError>Duplicate user name</StyledError>
           ) : (
             <StyledError></StyledError>
           )}
