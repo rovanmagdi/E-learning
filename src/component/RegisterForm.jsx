@@ -27,8 +27,11 @@ export default function RegisterForm() {
   const [errorState, setErrorState] = useState([]);
   const [isValid, setIsValid] = useState(false);
   const { name, email, password, confirmPassword } = user;
-  const [uniqueUserName, setUniqueUserName] = useState(true);
+  // const [uniqueUserName, setUniqueUserName] = useState(true);
   const BASE_URL = "http://localhost:4200/users";
+  // const duplicateName='';
+  const [duplicateName, setDuplicateName] = useState('');
+  // let errors = [];
   // let users = [];
 
   useEffect(() => {
@@ -37,12 +40,16 @@ export default function RegisterForm() {
       
     //   // console.log(users);
     // });
-  });
+    // validations(user).error?.details.forEach((element) => {
+    //   errors.push(element.path[0]);
+    // });
+  },[user,isValid,duplicateName]);
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
     setUser((user) => ({ ...user, [name]: value }));
     // console.log(user);
+    // setDuplicateName(null);
   }, []);
 
   const validations = (state) => {
@@ -67,7 +74,8 @@ export default function RegisterForm() {
 
   const handleSubmit = () => {
     // setUniqueUserName(true);
-    // console.log('entered');
+    // setDuplicateName('');
+    console.log('clicked');
     // let users=[]
     let errors = [];
     axios.get(`${BASE_URL}`).then((resp) => {
@@ -79,21 +87,25 @@ export default function RegisterForm() {
     });
     setErrorState(errors);
     errors.length === 0 ? setIsValid(true) : setIsValid(false);
+    console.log(errors);
+    console.log(isValid);
 
     if (isValid) {
       // console.log(uniqueUserName);
-      setUniqueUserName(true);
-      users.forEach((element) => {
-        if(element.name === user.name){
-          setUniqueUserName(false)
-          // console.log('match');
-        }
+      // setUniqueUserName(true);
+      // users.forEach((element) => {
+      //   if(element.name === user.name){
+      //     setUniqueUserName(false)
+      //     // console.log('match');
+      //   }
         
-      });
-      // console.log({users,user});
+      // });
+      setDuplicateName(users.find(el=>el.name===user.name)?.name);
+      // console.log(users.find(el=>el.name===user.name)?.name);
+      console.log(user);
 
-      if (uniqueUserName) {
-        // console.log('entered');
+      if (!duplicateName) {
+       
         localStorage.setItem("user", JSON.stringify(user));
 
         axios.post(`${BASE_URL}`, {
@@ -104,12 +116,7 @@ export default function RegisterForm() {
           cart: [],
         });
         
-        // .then(function (response) {
-        //   console.log(response);
-        // })
-        // .catch(function (error) {
-        //   console.log(error.response.data);
-        // });
+    
       }
     }
   };
@@ -151,7 +158,7 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-          {!uniqueUserName ? (
+          {duplicateName ? (
             <StyledError>Duplicate user name</StyledError>
           ) : (
             <StyledError></StyledError>
