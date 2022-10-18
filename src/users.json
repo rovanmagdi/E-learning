@@ -65,6 +65,28 @@
       "wishlist": [],
       "cart": [],
       "id": 6
+    },
+    {
+      "name": "rovan12",
+      "email": "Rovanmagdi@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 7
+    },
+    {
+      "name": "rovan",
+      "email": "Rovanmagdi26699@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 10
     }
   ]
 }

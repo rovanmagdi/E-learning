@@ -29,15 +29,16 @@ export default function RegisterForm() {
   const { name, email, password, confirmPassword } = user;
   const [uniqueUserName, setUniqueUserName] = useState(true);
   const BASE_URL = "http://localhost:4200/users";
-  // let users = [];
+  let errors = [];
 
   useEffect(() => {
-    // axios.get(`${BASE_URL}`).then((resp) => {
-    //   users = resp.data;
-      
-    //   // console.log(users);
-    // });
-  });
+    axios.get(`${BASE_URL}`).then((resp) => {
+      setUsers(resp.data) ;
+    });
+   
+  },[]);
+
+
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
@@ -54,63 +55,63 @@ export default function RegisterForm() {
       email: Joi.string()
         .required()
         .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
-      password: Joi.string()
-        .required()
-        .regex(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-        ),
-      confirmPassword: Joi.any().valid(Joi.ref("password")).required(),
+      password: Joi.string(),
+      //   .required()
+      //   .regex(
+      //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+      //   ),
+      confirmPassword: Joi.any()
+      // .valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
 
   const handleSubmit = () => {
-    // setUniqueUserName(true);
-    // console.log('entered');
-    // let users=[]
-    let errors = [];
-    axios.get(`${BASE_URL}`).then((resp) => {
-      setUsers(resp.data) ;
-    });
-    // console.log(users);
+
+    // let errors = [];
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
+
     setErrorState(errors);
     errors.length === 0 ? setIsValid(true) : setIsValid(false);
+    // console.log(errors);
 
-    if (isValid) {
-      // console.log(uniqueUserName);
+    if (isValid||!uniqueUserName) { //false not add 
+
+      console.log(isValid);
+      console.log("is  valid");
+
+      console.log(users.length);
+
       setUniqueUserName(true);
+
+      console.log(uniqueUserName);
+
+
       users.forEach((element) => {
         if(element.name === user.name){
           setUniqueUserName(false)
-          // console.log('match');
+       
         }
-        
       });
-      // console.log({users,user});
+     
+    }else{
+      console.log("is not valid");
+      console.log(isValid);
+      console.log(users.length);
 
-      if (uniqueUserName) {
-        // console.log('entered');
-        localStorage.setItem("user", JSON.stringify(user));
 
-        axios.post(`${BASE_URL}`, {
-          ...user,
-          collection: [],
-          archive: [],
-          wishlist: [],
-          cart: [],
-        });
-        
-        // .then(function (response) {
-        //   console.log(response);
-        // })
-        // .catch(function (error) {
-        //   console.log(error.response.data);
-        // });
-      }
+      // localStorage.setItem("user", JSON.stringify(user));
+
+      // axios.post(`${BASE_URL}`, {
+      //   ...user,
+      //   collection: [],
+      //   archive: [],
+      //   wishlist: [],
+      //   cart: [],
+      // });
     }
   };
 
