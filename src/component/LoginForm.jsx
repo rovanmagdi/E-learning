@@ -1,6 +1,6 @@
 import React from "react";
 import TxtUnderline from "../assets/shape-6.webp";
-import { Box, Avatar, Typography } from "@mui/material";
+import { Box} from "@mui/material";
 import {
   StyledSectionTitle,
   StyledBlackTxt,
@@ -9,11 +9,11 @@ import {
 } from "../styled/Typography";
 
 import { StyledFormBox } from "../styled/Box";
-import { FormControl, TextField, Button } from "@mui/material";
+import { FormControl} from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback } from "react";
-import Joi from "joi";
+import { useState, useCallback,useRef } from "react";
+import axios from "axios";
 
 export default function LoginForm() {
   const [user, setUser] = useState({
@@ -21,65 +21,36 @@ export default function LoginForm() {
     inputPassword: "",
    
   });
-  const [errorState, setErrorState] = useState(true);
-  const [isNotValid, setIsNotValid] = useState(true);
+  const BASE_URL = "http://localhost:4200/users";
+  const [errorState, setErrorState] = useState(false);
+  const isValid= useRef(false);
   const { userNameOrEmail,inputPassword } = user;
-  const userInfoObj = JSON.parse(`${localStorage.getItem("user")}`);
-  const {name,email,password} = userInfoObj;
+  const users = useRef([]);
+  // const userInfoObj = JSON.parse(`${localStorage.getItem("user")}`);
+  // const {name,email,password} = userInfoObj;
 
   const handleChange = useCallback((event) => {
-    // setErrorState(true);
+    
     const { name, value } = event.target;
     setUser((user) => ({ ...user, [name]: value }));
-    // console.log(user);
+    
   }, []);
 
-  const validations = (state) => {
-    const schema = Joi.object({
-      name: Joi.string()
-        .required()
-        .regex(/^[a-zA-Z\s]*$/),
+ 
+  const handleLogin = async () => {
 
-      email: Joi.string()
-        .required()
-        .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
-      password: Joi.string()
-        .required()
-        .regex(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-        ),
-      confirmPassword: Joi.any().valid(Joi.ref("password")).required(),
+     await axios.get(`${BASE_URL}`).then((resp) => {
+      users.current = resp.data;
     });
 
-    return schema.validate({ ...state }, { abortEarly: false });
-  };
-
-  const handleLogin = () => {
-    // let errors = [];
-
-    // validations(user).error?.details.forEach((element) => {
-    //   errors.push(element.path[0]);
-    // });
-    // setErrorState(errors);
-    // errors.length===0?setIsValid(true):setIsValid(false);
-
-    // if(isValid){
-    //   localStorage.setItem('user',JSON.stringify(user));
-    // }
-
-    if(userNameOrEmail===name || userNameOrEmail===email){
-        if(inputPassword===password){
-            setErrorState(false)
-            setIsNotValid(false)
-        } else{
-            setErrorState(true);
-        } 
-            
-        
-    }
-
-    if (!errorState){
-        console.log('logged in');
+    isValid.current = await users.current.find(
+      (el) => (el.name === userNameOrEmail || el.email === userNameOrEmail )&& el.password === inputPassword
+    );
+    if(isValid.current){
+      setErrorState(false);
+      console.log('logged in');
+    }else{
+      setErrorState(true);
     }
 
 
@@ -130,7 +101,7 @@ export default function LoginForm() {
             type="password"
           />
          {
-            isNotValid?(
+            errorState?(
                 <StyledError>Incorrect email or password</StyledError>
               ) : (
                 <StyledError></StyledError>
