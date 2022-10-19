@@ -1,4 +1,6 @@
 // import Header from "../component/header";
+
+import React, { useState } from 'react';
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
@@ -13,11 +15,14 @@ import LoginPage from '../pages/LoginPage'
 import {  Route, Routes } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage";
 import DetailsCourse from "../pages/DetailsCourses";
+import { AppContext } from '../context';
 
 function App() {
   const themeResponsive = useTheme();
   const matches = useMediaQuery(themeResponsive.breakpoints.up("976"));
+  const [ currentUser, setCurrentUser ] = useState({});
   return (
+    <AppContext.Provider value={{ currentUser,setCurrentUser}}>
     <ThemeProvider theme={theme}>
       {matches ? (
         <>
@@ -43,6 +48,7 @@ function App() {
 
       <Footer />
     </ThemeProvider>
+    </AppContext.Provider>
   );
 }
 

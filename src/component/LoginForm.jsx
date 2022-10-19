@@ -1,6 +1,6 @@
 import React from "react";
 import TxtUnderline from "../assets/shape-6.webp";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import {
   StyledSectionTitle,
   StyledBlackTxt,
@@ -9,53 +9,62 @@ import {
 } from "../styled/Typography";
 
 import { StyledFormBox } from "../styled/Box";
-import { FormControl} from "@mui/material";
+import { FormControl } from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback,useRef } from "react";
+import { useState, useCallback, useRef, useContext } from "react";
 import axios from "axios";
+import { AppContext } from "../context";
 
 export default function LoginForm() {
   const [user, setUser] = useState({
-    userNameOrEmail:'',
+    userNameOrEmail: "",
     inputPassword: "",
-   
   });
   const BASE_URL = "http://localhost:4200/users";
   const [errorState, setErrorState] = useState(false);
-  const isValid= useRef(false);
-  const { userNameOrEmail,inputPassword } = user;
+  const isValid = useRef(false);
+  const { userNameOrEmail, inputPassword } = user;
   const users = useRef([]);
   // const userInfoObj = JSON.parse(`${localStorage.getItem("user")}`);
   // const {name,email,password} = userInfoObj;
+  const { currentUser, setCurrentUser } = useContext(AppContext);
 
   const handleChange = useCallback((event) => {
-    
     const { name, value } = event.target;
     setUser((user) => ({ ...user, [name]: value }));
-    
   }, []);
 
- 
   const handleLogin = async () => {
+    console.log(currentUser);
+    setErrorState(false);
+    //  setCurrentUser( {});
 
-     await axios.get(`${BASE_URL}`).then((resp) => {
+    await axios.get(`${BASE_URL}`).then((resp) => {
       users.current = resp.data;
     });
 
     isValid.current = await users.current.find(
-      (el) => (el.name === userNameOrEmail || el.email === userNameOrEmail )&& el.password === inputPassword
+      (el) =>
+        (el.name === userNameOrEmail || el.email === userNameOrEmail) &&
+        el.password === inputPassword
     );
-    if(isValid.current){
+    if (isValid.current) {
       setErrorState(false);
-      console.log('logged in');
-    }else{
+      await setCurrentUser(
+        users.current.find(
+          (el) =>
+            (el.name === userNameOrEmail || el.email === userNameOrEmail) &&
+            el.password === inputPassword
+        )
+      );
+      // console.log(await currentUser);
+
+      console.log("logged in");
+    } else {
       setErrorState(true);
     }
-
-
   };
-
 
   return (
     <>
@@ -87,9 +96,7 @@ export default function LoginForm() {
             onChange={handleChange}
             fullWidth
           />
-         
 
-         
           <StyledFormInput
             id="outlined-basic"
             label="Password"
@@ -100,14 +107,12 @@ export default function LoginForm() {
             fullWidth
             type="password"
           />
-         {
-            errorState?(
-                <StyledError>Incorrect email or password</StyledError>
-              ) : (
-                <StyledError></StyledError>
-              )
-         }
-        
+          {errorState ? (
+            <StyledError>Incorrect email or password</StyledError>
+          ) : (
+            <StyledError></StyledError>
+          )}
+
           <StyledGreenButton
             variant="contained"
             fullWidth
