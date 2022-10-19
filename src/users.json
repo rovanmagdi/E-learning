@@ -10,6 +10,17 @@
       "wishlist": [],
       "cart": [],
       "id": 1
+    },
+    {
+      "name": "shefaa2",
+      "email": "shefaa2@gmail.com",
+      "password": "123456789aa@",
+      "confirmPassword": "123456789aa@",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 2
     }
   ]
 }

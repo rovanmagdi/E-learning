@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TxtUnderline from "../assets/shape-6.webp";
 import { Box } from "@mui/material";
 import {
@@ -10,10 +10,10 @@ import {
 import axios from "axios";
 
 import { StyledFormBox } from "../styled/Box";
-import { FormControl, TextField, Button } from "@mui/material";
+import { FormControl} from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback } from "react";
 import Joi from "joi";
 
 export default function RegisterForm() {
@@ -48,16 +48,18 @@ export default function RegisterForm() {
       email: Joi.string()
         .required()
         .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
-      password: Joi.string()
-        .required()
-        .regex(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-        ),
-      confirmPassword: Joi.any().valid(Joi.ref("password")).required(),
+      password: Joi.string(),
+      // .required()
+      // .regex(
+      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+      // ),
+      confirmPassword: Joi.any(),
+      // .valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
+  let errors = [];
 
   const handleSubmit = async () => {
     let errors = [];
@@ -86,7 +88,7 @@ export default function RegisterForm() {
 
       if ((await !duplicateName.current) && !(await duplicateEmail.current)) {
         localStorage.setItem("user", JSON.stringify(user));
-
+        
         axios.post(`${BASE_URL}`, {
           ...user,
           collection: [],
@@ -96,6 +98,8 @@ export default function RegisterForm() {
         });
       }
     }
+    
+   
   };
 
   return (
