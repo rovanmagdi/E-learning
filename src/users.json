@@ -100,8 +100,8 @@
       "id": 10
     },
     {
-      "name": "rovan55q",
-      "email": "Rovanmagdi@gmail.com",
+      "name": "Botetos5",
+      "email": "Sincere@april.biz",
       "password": "123",
       "confirmPassword": "123",
       "collection": [],
@@ -109,6 +109,17 @@
       "wishlist": [],
       "cart": [],
       "id": 11
+    },
+    {
+      "name": "Botetos5",
+      "email": "Sincere@april.biz",
+      "password": "123",
+      "confirmPassword": "123",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 12
     }
   ]
 }
