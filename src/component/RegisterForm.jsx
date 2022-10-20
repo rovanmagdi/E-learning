@@ -13,7 +13,7 @@ import { StyledFormBox } from "../styled/Box";
 import { FormControl } from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Joi from "joi";
 
 export default function RegisterForm() {
@@ -23,16 +23,18 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const users = useRef([]);
+  const [users, setUsers] = useState([]);
   const [errorState, setErrorState] = useState([]);
   const isValid = useRef(false);
   const { name, email, password, confirmPassword } = user;
-
   const BASE_URL = "http://localhost:4200/users";
-  const [duplicateNameState, setDuplicateNameState] = useState(false);
   const duplicateName = useRef("");
-  const duplicateEmail = useRef("");
-  const [duplicateEmailState, setDuplicateEmailState] = useState(false);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}`).then((resp) => {
+      setUsers(resp.data);
+    });
+  }, [users]);
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
@@ -48,45 +50,34 @@ export default function RegisterForm() {
       email: Joi.string()
         .required()
         .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
-      password: Joi.string()
-        .required()
-        .regex(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-        ),
+      password: Joi.string(),
+      // .required()
+      // .regex(
+      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+      // ),
       confirmPassword: Joi.any(),
       // .valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
-  
+  let errors = [];
 
-  const handleSubmit = async () => {
-    let errors = [];
-
+  const handleSubmit = () => {
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
     setErrorState(errors);
+
     errors.length === 0 ? (isValid.current = true) : (isValid.current = false);
 
     if (isValid.current) {
-      await axios.get(`${BASE_URL}`).then((resp) => {
-        users.current = resp.data;
-      });
+      // console.log(errors);
+      duplicateName.current = users.find((el) => el.name === user.name)?.name;
 
-      duplicateName.current = await users.current.find(
-        (el) => el.name === user.name
-      )?.name;
+      if (!duplicateName.current) {
+        console.log("not duplicate name");
 
-      duplicateEmail.current = await users.current.find(
-        (el) => el.email === user.email
-      )?.email;
-
-      setDuplicateNameState(duplicateName.current);
-      setDuplicateEmailState(duplicateEmail.current);
-
-      if ((await !duplicateName.current) && !(await duplicateEmail.current)) {
         localStorage.setItem("user", JSON.stringify(user));
 
         axios.post(`${BASE_URL}`, {
@@ -137,7 +128,7 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-          {duplicateNameState ? (
+          {duplicateName.current ? (
             <StyledError>Duplicate user name</StyledError>
           ) : (
             <StyledError></StyledError>
@@ -148,18 +139,12 @@ export default function RegisterForm() {
             label="Email"
             variant="outlined"
             name="email"
-            type="email"
             value={email}
             onChange={handleChange}
             fullWidth
           />
           {errorState.find((el) => el === "email") ? (
             <StyledError> EX: "example@domain.com"</StyledError>
-          ) : (
-            <StyledError></StyledError>
-          )}
-          {duplicateEmailState ? (
-            <StyledError>This email already have an account</StyledError>
           ) : (
             <StyledError></StyledError>
           )}

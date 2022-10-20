@@ -221,3 +221,9 @@ export const StyledBoxNotFound = styled(Box)(({ theme }) => ({
 }
  
 }));
+///List Details Courses
+
+export const StyledListDetailsCourse = styled(Box)(({ theme }) => ({
+color:`${theme.palette.primary.main}`
+  
+}));

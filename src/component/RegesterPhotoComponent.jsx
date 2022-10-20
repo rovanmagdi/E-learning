@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Avatar, Typography, Grid, Item } from "@mui/material";
+import { Box} from "@mui/material";
 import girlPhoto from "../assets/register-login.webp";
 import Arrow from "../assets/shape-26.webp";
 

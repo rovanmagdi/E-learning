@@ -13,15 +13,14 @@ import { Box } from "@mui/system";
 import Rating from "@mui/material/Rating";
 import { StyledCardCourse } from "../styled/Card";
 import axios from "axios";
-import io from 'socket.io-client';
+import { useNavigate } from "react-router";
 
-const socket = io();
 export default function MediaCard({
   id,
   imageBase,
   author,
   imageAuthor,
-  description,
+  title,
   
   rating,
 }) {
@@ -35,9 +34,14 @@ export default function MediaCard({
       console.log(response.data);
     }
   };
-  
+  const navigate=useNavigate()
+  const handleClick=(id)=>
+  {
+    console.log("click :",id);
+    navigate(`/${id}`)
+  }
   return (
-    <StyledCardCourse>
+    <StyledCardCourse onClick={()=>handleClick(id)}>
       <CardHeader
         sx={{ position: "absolute", right: "0", margin: "20px" }}
         action={
@@ -81,7 +85,7 @@ export default function MediaCard({
           variant="body2"
           sx={{ fontWeight: "bold", fontSize: "1.1rem" }}
         >
-          {description}
+          {title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

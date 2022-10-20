@@ -1,6 +1,6 @@
 // import Header from "../component/header";
 
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
@@ -21,6 +21,7 @@ function App() {
   const themeResponsive = useTheme();
   const matches = useMediaQuery(themeResponsive.breakpoints.up("976"));
   const [ currentUser, setCurrentUser ] = useState({});
+ 
   return (
     <AppContext.Provider value={{ currentUser,setCurrentUser}}>
     <ThemeProvider theme={theme}>
@@ -39,7 +40,7 @@ function App() {
       {/* <Header /> */}
 
       <Routes>
-        <Route path="/home" element={<DetailsCourse />} />
+        <Route path="/:id" element={<DetailsCourse />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/All Courses" element={<CoursesPage />} />

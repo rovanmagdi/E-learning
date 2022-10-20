@@ -111,15 +111,93 @@
       "id": 11
     },
     {
-      "name": "Botetos2",
-      "email": "Rovanmagdi@gmail.com",
+      "name": "Botetos22",
+      "email": "ali@gmail.com",
       "password": "123",
-      "confirmPassword": "1123",
+      "confirmPassword": "123",
       "collection": [],
       "archive": [],
       "wishlist": [],
       "cart": [],
       "id": 12
+    },
+    {
+      "name": "Botetos88888",
+      "email": "Rovanmagdi26699@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 13
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-01.jpg",
+      "author": "Ohula Malsh",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg",
+      "title": "Data Science and Machine Learning with Python - Hands On!",
+      "rating": "3",
+      "price": "720",
+      "level": "Secandary",
+      "lecture": "80",
+      "durationH": "02",
+      "durationM": "15"
+    },
+    {
+      "id": "2",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "title": "Create Amazing Color Schemes for Your UX Design Projects",
+      "rating": "2",
+      "price": "520",
+      "level": "Secandary",
+      "lecture": "10",
+      "durationH": "02",
+      "durationM": "15"
+    },
+    {
+      "id": "3",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
+      "author": "Rose Simmons ",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
+      "title": "Culture & Leadership: Strategies for a Successful Business",
+      "rating": "2",
+      "price": "320",
+      "level": "Primary",
+      "lecture": "15",
+      "durationH": "02",
+      "durationM": "15"
+    },
+    {
+      "id": "4",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "author": "Jason Williams",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "title": "Build Brand Into Marketing: Tackling the New Marketing Landscape",
+      "rating": "3",
+      "price": "480",
+      "level": "Primary",
+      "lecture": "15",
+      "durationH": "02",
+      "durationM": "15"
+    },
+    {
+      "id": "5",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "title": "Create Amazing Color Schemes for Your UX Design Projects",
+      "rating": "1",
+      "price": "420",
+      "level": "Secandary",
+      "lecture": "30",
+      "durationH": "02",
+      "durationM": "15"
     }
   ]
 }

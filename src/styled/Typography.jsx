@@ -59,10 +59,6 @@ export const StyledError = styled(Typography)(({ theme }) => ({
   color: "red",
   textAlign:'left'
 }));
-
-
-
-
 export const StyledWhiteTxt = styled(Typography)(({ theme }) => ({
   color: `#FFFFFF`,
   fontSize: "1.2em",
@@ -96,4 +92,14 @@ export const StyledTypographyNotFoundTitle = styled(Typography)(({ theme }) => (
   fontWeight:"520",
   fontSize:"40px",
   marginBottom:"20px"
+ }));
+
+ 
+ //Details Courses
+ export const StyledTypographyDetails = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
+  margin: "30px 0px 30px 0px",
+  fontSize: "2rem",
+  fontWeight: "800",
+  color: `${theme.palette.primary.main}`,
  }));

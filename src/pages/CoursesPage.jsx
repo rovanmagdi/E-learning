@@ -1,5 +1,6 @@
 import React from "react";
 import CoursesTab from "../component/coursesTab";
+import GetAppComponent from "../component/GetAppComponent";
 import PagesCoverComponent from "../component/pagesCoverComponent";
 
 export default function Courses() {
@@ -7,6 +8,7 @@ export default function Courses() {
     <>
       <PagesCoverComponent firstWord="My" secondWord="Courses" />
       <CoursesTab />
+      <GetAppComponent/>
     </>
   );
 }
