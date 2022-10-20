@@ -1,4 +1,4 @@
-import { Box,  Grid, Rating, Stack, Typography } from "@mui/material";
+import { Box, Grid, Rating, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import CardActions from "@mui/material/CardActions";
@@ -13,8 +13,8 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import ListIcon from "@mui/icons-material/List";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import DetailsCourseTab from "./detailsCourseTab";
-import {StyledButtonDetails} from '../styled/Button';
-import {   useMediaQuery } from "@mui/material";
+import { StyledButtonDetails } from "../styled/Button";
+import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import axios from "axios";
 import { useParams } from "react-router";
@@ -48,179 +48,193 @@ const CourseComponent = () => {
   return (
     <>
       <Container>
-        {matches? <>
-          <Grid container item xs={12} sx={{ marginTop: "50px" }}>
-          <Grid item xs={7} sx={{ marginRight: "30px" }}>
-            <Box
-              component="img"
-              src={`${course.imageBase}`}
-              width="100%"
-              height="420px"
-              sx={{ borderRadius: "20px" }}
-            />
-            <Typography
-              component="h1"
-              variant="body1"
-              sx={{ fontWeight: "bold", fontSize: "1.9rem", marginTop: "20px" }}
-            >
-              {course.title}
-            </Typography>
-            <Grid
-              container
-              item
-              xs={12}
-              sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
-            >
-              <Grid item xs={8}>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  sx={{ alignItems: "center" }}
-                >
-                  <Box
-                    component="img"
-                    src={`${course.imageAuthor}`}
-                    sx={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                  />
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
-                  >
-                    {course.author}
-                  </Typography>
-                </Stack>
-              </Grid>
-              <Grid item xs={2}>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="share">
-                    {/* <StarIcon sx={{ color: "#ffba00" }} />
-                     */}
-                    <Rating
-                      name="simple-controlled"
-                      value={rating}
-                      onChange={(event) => {
-                        handleChange(event.target.value, id);
-                      }}
-                    />
-                  </IconButton>
-                </CardActions>
-              </Grid>
-            </Grid>
-          </Grid>
-          <StyledGridDetails item xs={4}>
-            <StyledTypographyDetails variant="body2" component="h1">
-              $ {course.price}
-            </StyledTypographyDetails>
-
-            <Box sx={{ width: "80%", maxWidth: 360, margin: "auto" }}>
-              <Divider />
-              <ListDetailsCourses
-                icon={<PersonIcon />}
-                nickName="Instructor"
-                name={course.author}
-              />
-              <ListDetailsCourses
-                icon={<AccessTimeIcon />}
-                nickName="Duration"
-                name={`${course.durationH} hr ${course.durationM} mins`}
-              />
-              <ListDetailsCourses
-                icon={<TheatersIcon />}
-                nickName="Lectures"
-                name={course.lecture}
-              />
-              <ListDetailsCourses
-                icon={<ListIcon />}
-                nickName="Level"
-                name={course.level}
-              />
-              <ListDetailsCourses
-                icon={<LibraryBooksIcon />}
-                nickName="Language"
-                name="English"
-              />
-              <ListDetailsCourses
-                icon={<TheatersIcon />}
-                nickName="Certificate"
-                name="Yes"
-              />
-              <Box textAlign="center">
-                <StyledButtonDetails
-                  variant="contained"
+        {matches ? (
+          <>
+            <Grid container item xs={12} sx={{ marginTop: "50px" }}>
+              <Grid item xs={7} sx={{ marginRight: "30px" }}>
+                <Box
+                  component="img"
+                  src={`${course.imageBase}`}
+                  width="100%"
+                  height="420px"
+                  sx={{ borderRadius: "20px" }}
+                />
+                <Typography
+                  component="h1"
+                  variant="body1"
                   sx={{
-                   
-                    
+                    fontWeight: "bold",
+                    fontSize: "1.9rem",
+                    marginTop: "20px",
                   }}
                 >
-                  Enroll Now
-                </StyledButtonDetails>
-              </Box>
-            </Box>
-          </StyledGridDetails>
-        </Grid>
-        </>:<Container><Grid container item xs={12} sx={{ marginTop: "50px" }}>
-          <Grid item xs={12} sx={{ marginRight: "30px" }}>
-            <Box
-              component="img"
-              src={`${course.imageBase}`}
-              width="100%"
-              height="420px"
-              sx={{ borderRadius: "20px" }}
-            />
-            <Typography
-              component="h1"
-              variant="body1"
-              sx={{ fontWeight: "bold", fontSize: "1.9rem", marginTop: "20px" }}
-            >
-              {course.title}
-            </Typography>
-            <Grid
-              container
-              item
-              xs={12}
-              sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
-            >
-              <Grid item xs={8}>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  sx={{ alignItems: "center" }}
+                  {course.title}
+                </Typography>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
                 >
-                  <Box
-                    component="img"
-                    src={`${course.imageAuthor}`}
-                    sx={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                  />
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
-                  >
-                    {course.author}
-                  </Typography>
-                </Stack>
+                  <Grid item xs={8}>
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ alignItems: "center" }}
+                    >
+                      <Box
+                        component="img"
+                        src={`${course.imageAuthor}`}
+                        sx={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                        }}
+                      />
+                      <Typography
+                        variant="body2"
+                        component="span"
+                        sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
+                      >
+                        {course.author}
+                      </Typography>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                        {/* <StarIcon sx={{ color: "#ffba00" }} />
+                         */}
+                        <Rating
+                          name="simple-controlled"
+                          value={Number(rating)}
+                          onChange={(event) => {
+                            handleChange(event.target.value, id);
+                          }}
+                        />
+                      </IconButton>
+                    </CardActions>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={2}>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="share">
-                    {/* <StarIcon sx={{ color: "#ffba00" }} />
-                     */}
-                    <Rating
-                      name="simple-controlled"
-                      value={rating}
-                      onChange={(event) => {
-                        handleChange(event.target.value, id);
-                      }}
-                    />
-                  </IconButton>
-                </CardActions>
+              <StyledGridDetails item xs={4}>
+                <StyledTypographyDetails variant="body2" component="h1">
+                  $ {course.price}
+                </StyledTypographyDetails>
+
+                <Box sx={{ width: "80%", maxWidth: 360, margin: "auto" }}>
+                  <Divider />
+                  <ListDetailsCourses
+                    icon={<PersonIcon />}
+                    nickName="Instructor"
+                    name={course.author}
+                  />
+                  <ListDetailsCourses
+                    icon={<AccessTimeIcon />}
+                    nickName="Duration"
+                    name={`${course.durationH} hr ${course.durationM} mins`}
+                  />
+                  <ListDetailsCourses
+                    icon={<TheatersIcon />}
+                    nickName="Lectures"
+                    name={course.lecture}
+                  />
+                  <ListDetailsCourses
+                    icon={<ListIcon />}
+                    nickName="Level"
+                    name={course.level}
+                  />
+                  <ListDetailsCourses
+                    icon={<LibraryBooksIcon />}
+                    nickName="Language"
+                    name="English"
+                  />
+                  <ListDetailsCourses
+                    icon={<TheatersIcon />}
+                    nickName="Certificate"
+                    name="Yes"
+                  />
+                  <Box textAlign="center">
+                    <StyledButtonDetails variant="contained" sx={{}}>
+                      Enroll Now
+                    </StyledButtonDetails>
+                  </Box>
+                </Box>
+              </StyledGridDetails>
+            </Grid>
+          </>
+        ) : (
+          <Container>
+            <Grid container item xs={12} sx={{ marginTop: "50px" }}>
+              <Grid item xs={12} sx={{ marginRight: "30px" }}>
+                <Box
+                  component="img"
+                  src={`${course.imageBase}`}
+                  width="100%"
+                  height="420px"
+                  sx={{ borderRadius: "20px" }}
+                />
+                <Typography
+                  component="h1"
+                  variant="body1"
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: "1.9rem",
+                    marginTop: "20px",
+                  }}
+                >
+                  {course.title}
+                </Typography>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
+                >
+                  <Grid item xs={8}>
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ alignItems: "center" }}
+                    >
+                      <Box
+                        component="img"
+                        src={`${course.imageAuthor}`}
+                        sx={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                        }}
+                      />
+                      <Typography
+                        variant="body2"
+                        component="span"
+                        sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
+                      >
+                        {course.author}
+                      </Typography>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                        <Rating
+                          name="simple-controlled"
+                          value={Number(rating)}
+                          onChange={(event) => {
+                            handleChange(event.target.value, id);
+                          }}
+                        />
+                      </IconButton>
+                    </CardActions>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          </Grid></Container>}
-        
-        <DetailsCourseTab />
+          </Container>
+        )}
+
+        <DetailsCourseTab instructor={course.instructor}/>
       </Container>
     </>
   );

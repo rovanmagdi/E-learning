@@ -3,18 +3,19 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { CoursesContext } from "./coursesComponent";
+// import { CoursesContext } from "./coursesComponent";
 import { Container, useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { StyledNavDetailsCourses } from "../styled/Grid";
 import TabPanelDetails from "./tabPanelDetails";
+import CourseInstructor from "./courseInstructor";
 
 function TabPanel(props) {
   const { children, value, index } = props;
 
   return <>{value === index && <>{children}</>}</>;
 }
-function DetailsCourseTab(props) {
+function DetailsCourseTab({instructor}) {
   const [activeButton, setActiveButton] = React.useState("Description");
 
   const [value, setValue] = React.useState(0);
@@ -30,11 +31,9 @@ function DetailsCourseTab(props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("1199"));
 
-  const state = React.useContext(CoursesContext);
+  // const state = React.useContext(CoursesContext);
 
-  React.useEffect(() => {
-    // console.log(state);
-  });
+  
   return (
     <>
       {matches ? (
@@ -119,7 +118,7 @@ function DetailsCourseTab(props) {
             />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+            <CourseInstructor instructor={instructor}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
             Item Three
@@ -205,7 +204,9 @@ function DetailsCourseTab(props) {
                 Ipsum is simply dummy text of the printing and typesetting
                 industry. "
           />
-          <TabPanel value={value} index={1}></TabPanel>
+          <TabPanel value={value} index={1}>
+
+          </TabPanel>
           <TabPanel value={value} index={2}></TabPanel>
         </Container>
       )}

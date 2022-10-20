@@ -145,7 +145,14 @@
       "level": "Secandary",
       "lecture": "80",
       "durationH": "02",
-      "durationM": "15"
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Margarita James",
+          "job": "MSC, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
     },
     {
       "id": "2",
@@ -153,12 +160,24 @@
       "author": "Pamela Foste",
       "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
       "title": "Create Amazing Color Schemes for Your UX Design Projects",
-      "rating": "2",
+      "rating": "4",
       "price": "520",
       "level": "Secandary",
       "lecture": "10",
       "durationH": "02",
-      "durationM": "15"
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
     },
     {
       "id": "3",
@@ -171,7 +190,24 @@
       "level": "Primary",
       "lecture": "15",
       "durationH": "02",
-      "durationM": "15"
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Sonya Gordon",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+          "job": "MBA, Instructor"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
     },
     {
       "id": "4",
@@ -184,7 +220,24 @@
       "level": "Primary",
       "lecture": "15",
       "durationH": "02",
-      "durationM": "15"
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
     },
     {
       "id": "5",
@@ -197,7 +250,24 @@
       "level": "Secandary",
       "lecture": "30",
       "durationH": "02",
-      "durationM": "15"
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        }
+      ]
     }
   ]
 }

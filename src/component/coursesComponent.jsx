@@ -3,7 +3,6 @@ import {} from "@mui/system";
 import { createContext, useEffect, useState } from "react";
 import MediaCard from "./cardComponent";
 import axios from "axios";
-import GetAppComponent from "./GetAppComponent";
 
 const BASE_URL = "http://localhost:4200/courses";
 
