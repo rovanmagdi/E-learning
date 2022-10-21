@@ -26,8 +26,7 @@ export default function LoginForm() {
   const isValid = useRef(false);
   const { userNameOrEmail, inputPassword } = user;
   const users = useRef([]);
-  // const userInfoObj = JSON.parse(`${localStorage.getItem("user")}`);
-  // const {name,email,password} = userInfoObj;
+  
   const { currentUser, setCurrentUser } = useContext(AppContext);
 
   const handleChange = useCallback((event) => {

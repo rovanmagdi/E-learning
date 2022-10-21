@@ -94,7 +94,7 @@ export default function MediaCard({
            */}
           <Rating
             name="simple-controlled"
-            value={rating}
+            value={Number(rating)}
             onChange={(event) => {
               handleChange(event.target.value, id);
             }}

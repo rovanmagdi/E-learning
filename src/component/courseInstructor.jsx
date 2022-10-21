@@ -1,12 +1,12 @@
-import { Grid, Stack, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import { StyledcourseInstructor } from "../styled/Box";
 
 function CourseInstructor({ instructor }) {
-  useEffect(() => {
-    console.log(instructor);
-  }, []);
+  // useEffect(() => {
+  //   console.log(instructor);
+  // }, []);
   return (
     <>
     <Box sx={{marginTop:"20px"}} component="h2">Course Instructor:</Box>
