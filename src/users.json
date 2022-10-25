@@ -1,15 +1,24 @@
 {
   "users": [
     {
+      "name": "shefaa adel",
+      "email": "shefaaadel19@gmail.com",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 1
+    },
+    {
       "name": "shefaa",
-      "email": "aaa@gmail.com",
+      "email": "sss@hh.com",
       "password": "123456789aa@",
       "confirmPassword": "123456789aa@",
       "collection": [],
       "archive": [],
       "wishlist": [],
       "cart": [],
-      "id": 1
+      "id": 2
     }
   ],
   "courses": [

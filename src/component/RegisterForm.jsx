@@ -18,7 +18,7 @@ import Joi from "joi";
 import { AppContext } from "../context";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-// import { gapi } from "gapi-script";
+import { gapi } from "gapi-script";
 
 export default function RegisterForm() {
   const [user, setUser] = useState({
@@ -43,6 +43,14 @@ export default function RegisterForm() {
     axios.get(`${BASE_URL}`).then((resp) => {
       setUsers(resp.data);
     });
+
+    const initClient = () => {
+      gapi.auth2.init({
+          clientId: clientId,
+          scope: ''
+      });
+  };
+  gapi.load('client:auth2', initClient);
   }, [users]);
 
   const handleChange = useCallback((event) => {
@@ -90,7 +98,11 @@ export default function RegisterForm() {
       )?.email;
 
       if (!duplicateName.current && !duplicateEmail.current) {
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify({...user,
+          collection: [],
+          archive: [],
+          wishlist: [],
+          cart: []}));
 
         axios.post(`${BASE_URL}`, {
           ...user,
