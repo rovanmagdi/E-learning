@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
+import { GoogleLogin } from 'react-google-login';
 //Navbar
 export const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: "capitalize",
@@ -76,6 +77,7 @@ export const StyledGreenButton = styled(Button)(({ theme }) => ({
 export const StyledLightGreenButton = styled(Button)(({ theme }) => ({
   backgroundColor:'#E7F8EE',
   marginTop:'20px',
+  marginBottom:'5px',
   borderRadius:'10px',
   padding:'10px',
   color:'#309255',

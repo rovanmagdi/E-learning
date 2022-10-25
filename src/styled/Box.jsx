@@ -16,8 +16,8 @@ export const StyledPageCover = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledCircularBorder = styled(Box)(({ theme }) => ({
-  width: "10%",
-  height: "20%",
+  width: "8%",
+  height: "23%",
   // textAlign: 'center',
   border: "1px solid rgba(48,146,85,0.2)",
   borderRadius: "50%",
@@ -39,7 +39,7 @@ export const StyledCircularBorder = styled(Box)(({ theme }) => ({
 
 export const StyledCircularBox = styled(Box)(({ theme }) => ({
   width: "70%",
-  height: "100%",
+  height: "90%",
   //  textAlign: 'center',
   borderRadius: "50%",
   padding: "10px",

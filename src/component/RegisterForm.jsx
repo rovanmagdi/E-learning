@@ -10,11 +10,15 @@ import {
 import axios from "axios";
 
 import { StyledFormBox } from "../styled/Box";
-import { FormControl } from "@mui/material";
+import { FormControl, Button } from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext, useEffect } from "react";
 import Joi from "joi";
+import { AppContext } from "../context";
+import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+// import { gapi } from "gapi-script";
 
 export default function RegisterForm() {
   const [user, setUser] = useState({
@@ -23,16 +27,23 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const users = useRef([]);
+  const [users, setUsers] = useState([]);
   const [errorState, setErrorState] = useState([]);
   const isValid = useRef(false);
   const { name, email, password, confirmPassword } = user;
-
   const BASE_URL = "http://localhost:4200/users";
-  const [duplicateNameState, setDuplicateNameState] = useState(false);
   const duplicateName = useRef("");
   const duplicateEmail = useRef("");
-  const [duplicateEmailState, setDuplicateEmailState] = useState(false);
+  const { currentUser, setCurrentUser } = useContext(AppContext);
+  const navigate = useNavigate();
+  const clientId =
+    "1007166584351-kk9dpm5hcrki1sbad0vuamgalgk1d1c1.apps.googleusercontent.com";
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}`).then((resp) => {
+      setUsers(resp.data);
+    });
+  }, [users]);
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
@@ -53,15 +64,13 @@ export default function RegisterForm() {
         .regex(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
         ),
-      confirmPassword: Joi.any(),
-      // .valid(Joi.ref("password")).required(),
+      confirmPassword: Joi.any().valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
-  
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     let errors = [];
 
     validations(user).error?.details.forEach((element) => {
@@ -71,22 +80,13 @@ export default function RegisterForm() {
     errors.length === 0 ? (isValid.current = true) : (isValid.current = false);
 
     if (isValid.current) {
-      await axios.get(`${BASE_URL}`).then((resp) => {
-        users.current = resp.data;
-      });
+      duplicateName.current = users.find((el) => el.name === user.name)?.name;
 
-      duplicateName.current = await users.current.find(
-        (el) => el.name === user.name
-      )?.name;
-
-      duplicateEmail.current = await users.current.find(
+      duplicateEmail.current = users.find(
         (el) => el.email === user.email
       )?.email;
 
-      setDuplicateNameState(duplicateName.current);
-      setDuplicateEmailState(duplicateEmail.current);
-
-      if ((await !duplicateName.current) && !(await duplicateEmail.current)) {
+      if (!duplicateName.current && !duplicateEmail.current) {
         localStorage.setItem("user", JSON.stringify(user));
 
         axios.post(`${BASE_URL}`, {
@@ -96,8 +96,61 @@ export default function RegisterForm() {
           wishlist: [],
           cart: [],
         });
+
+        setCurrentUser({
+          ...user,
+          collection: [],
+          archive: [],
+          wishlist: [],
+          cart: [],
+        });
+        navigate("/home");
       }
     }
+  };
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const onSuccess = (res) => {
+    const { name, email } = res.profileObj;
+
+    const googleUser = users.find(
+      (el) => el.name === name || el.email === email
+    );
+    // console.log(googleUser);
+    if (googleUser) {
+      localStorage.setItem("user", JSON.stringify(googleUser));
+      setCurrentUser({
+        ...googleUser,
+      });
+      navigate("/home");
+    } else {
+      localStorage.setItem("user", JSON.stringify({ name, email, collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [], }));
+      setCurrentUser({
+        name: name,
+        email: email,
+        collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [],
+      });
+      axios.post(`${BASE_URL}`, {
+        name: name,
+        email: email,
+        collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [],
+      });
+      navigate("/home");
+    }
+  };
+  const onFailure = (err) => {
+    console.log("failed:", err);
   };
 
   return (
@@ -137,12 +190,11 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-          {duplicateNameState ? (
+          {duplicateName.current ? (
             <StyledError>Duplicate user name</StyledError>
           ) : (
             <StyledError></StyledError>
           )}
-
           <StyledFormInput
             id="outlined-basic"
             label="Email"
@@ -158,7 +210,7 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-          {duplicateEmailState ? (
+          {duplicateEmail.current ? (
             <StyledError>This email already have an account</StyledError>
           ) : (
             <StyledError></StyledError>
@@ -181,7 +233,6 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-
           <StyledFormInput
             id="outlined-basic"
             label="Confirm password"
@@ -204,9 +255,28 @@ export default function RegisterForm() {
           >
             Create an account
           </StyledGreenButton>
-          <StyledLightGreenButton variant="contained" fullWidth>
-            Signup with google
-          </StyledLightGreenButton>
+          <GoogleLogin
+            clientId={clientId}
+            render={(renderProps) => (
+              <StyledLightGreenButton
+                variant="contained"
+                fullWidth
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                Sign in with Google
+              </StyledLightGreenButton>
+            )}
+            buttonText="Login"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={false}
+          />
+          <StyledBlackTxt>Already have an account?</StyledBlackTxt>{" "}
+          <Button onClick={handleLogin}>
+            <StyledGreenTxt>Login</StyledGreenTxt>
+          </Button>
         </FormControl>
       </StyledFormBox>
     </>
