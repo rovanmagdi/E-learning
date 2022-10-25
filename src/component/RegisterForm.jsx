@@ -70,13 +70,16 @@ export default function RegisterForm() {
     return schema.validate({ ...state }, { abortEarly: false });
   };
 
+  
+    
+
   const handleSubmit = () => {
     let errors = [];
-
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
     setErrorState(errors);
+
     errors.length === 0 ? (isValid.current = true) : (isValid.current = false);
 
     if (isValid.current) {
@@ -200,7 +203,6 @@ export default function RegisterForm() {
             label="Email"
             variant="outlined"
             name="email"
-            type="email"
             value={email}
             onChange={handleChange}
             fullWidth

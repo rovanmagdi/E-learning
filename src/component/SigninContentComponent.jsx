@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@mui/system";
-import { Box, Avatar, Typography, Grid, Item } from "@mui/material";
+import {  Grid } from "@mui/material";
 import RegesterPhotoComponent from "../component/RegesterPhotoComponent";
 import LoginForm from "../component/LoginForm";
 

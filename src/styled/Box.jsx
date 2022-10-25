@@ -162,7 +162,7 @@ export const StyledBtnGoogleBox = styled(Box)(({ theme }) => ({
     height: "120%",
     top: "90%",
   },
- 
+
   [theme.breakpoints.down("sm")]: {
     left: "0",
     width: "40%",
@@ -201,23 +201,33 @@ export const StyledGetAppCircularShape = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
 
   position: "absolute",
-  
 }));
 
-//
+//not found
 export const StyledBoxNotFound = styled(Box)(({ theme }) => ({
-  color: `${theme.palette.primary.main}`,"&:before":{
-    position:" absolute",
+  color: `${theme.palette.primary.main}`,
+  "&:before": {
+    position: " absolute",
     content: `''`,
-    backgroundImage:"url(https://htmldemo.net/edule/eduLe/assets/images/shape/shape-4.png)",
-    backgroundPosition:" center center",
-    backgroundSize:" cover",
-    backgroundRepeat:" no-repeat",
-    width:"260px",
-    height:" 21px",
-    
-    transform:" translateY(300%)",
+    backgroundImage:
+      "url(https://htmldemo.net/edule/eduLe/assets/images/shape/shape-4.png)",
+    backgroundPosition: " center center",
+    backgroundSize: " cover",
+    backgroundRepeat: " no-repeat",
+    width: "260px",
+    height: " 21px",
 
-}
- 
+    transform: " translateY(300%)",
+  },
+}));
+///List Details Courses
+
+export const StyledListDetailsCourse = styled(Box)(({ theme }) => ({
+  color: `${theme.palette.primary.main}`,
+}));
+
+export const StyledcourseInstructor = styled(Box)(({ theme }) => ({
+  borderRadius: "50%",
+  border:`3px solid ${theme.palette.primary.light}`,
+  padding: "10px",
 }));

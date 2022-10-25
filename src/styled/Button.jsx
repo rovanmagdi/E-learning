@@ -126,3 +126,30 @@ export const StyledButtonNotFound = styled(Button)(({ theme }) => ({
     fontSize:'.7em',
   }
 }));
+
+//Details Course
+
+export const StyledButtonDetails = styled(Button)(({ theme }) => ({
+  padding: "10px",
+  margin: "20px",
+  textTransform: "capitalize",
+  fontWeight: "600",
+  fontSize: "1.3rem",
+
+  backgroundImage:' linear-gradient(#212832, #212832), linear-gradient(#309255, #309255)',
+  backgroundSize:' 0 100%, auto',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  transition: 'all .3s ease-out',
+
+
+  "&:hover": {
+    color:' #fff',
+    backgroundSize:' 100% 100%, auto',
+   
+  }, [theme.breakpoints.down('md')]: {
+    fontSize:'1em',
+  },[theme.breakpoints.down('sm')]: {
+    fontSize:'.7em',
+  }
+}));

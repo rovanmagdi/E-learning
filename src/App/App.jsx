@@ -1,6 +1,6 @@
 // import Header from "../component/header";
 
-import React, { useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
@@ -20,9 +20,17 @@ import { AppContext } from '../context';
 function App() {
   const themeResponsive = useTheme();
   const matches = useMediaQuery(themeResponsive.breakpoints.up("976"));
-  const [ currentUser, setCurrentUser ] = useState({});
+  // const { courseContext, setCourseContext } = useState({});
+   const [ currentUser, setCurrentUser ] = useState({});
+
+ 
+  useEffect(() =>{
+    // console.log(currentUser);
+    // console.log(courseContext);
+
+  })
   return (
-    <AppContext.Provider value={{ currentUser,setCurrentUser}}>
+    <AppContext.Provider value={{ currentUser,setCurrentUser }}>
     <ThemeProvider theme={theme}>
       {matches ? (
         <>
@@ -39,7 +47,9 @@ function App() {
       {/* <Header /> */}
 
       <Routes>
-        <Route path="/home" element={<DetailsCourse />} />
+        <Route path="/:id" element={<DetailsCourse />} />
+        <Route path="/home" element={<SignUpPage />} />
+
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/All Courses" element={<CoursesPage />} />
@@ -48,7 +58,7 @@ function App() {
 
       <Footer />
     </ThemeProvider>
-    </AppContext.Provider>
+     </AppContext.Provider>
   );
 }
 

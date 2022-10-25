@@ -24,4 +24,21 @@ export const StyledNavbar = styled(Grid)(({ theme }) => ({
    
   }));
 
+  //Details Course
+  export const StyledGridDetails = styled(Grid)(({ theme }) => ({
+    backgroundColor: `${theme.palette.primary.light}`,
+    color: `${theme.palette.secondary.main}`,
+    borderRadius: "20px",
+
+  
+ }));
+ export const StyledNavDetailsCourses = styled(Grid)(({ theme }) => ({
+  backgroundColor: `${theme.palette.primary.light}`,
+  padding:"15px",
+  marginTop :"20px",
+  borderRadius:"15px"
+
+}));
+
+
   

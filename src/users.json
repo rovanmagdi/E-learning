@@ -1,13 +1,152 @@
 {
   "users": [
     {
-      "name": "shefaa adel",
-      "email": "shefaaadel19@gmail.com",
+      "name": "shefaa",
+      "email": "aaa@gmail.com",
+      "password": "123456789aa@",
+      "confirmPassword": "123456789aa@",
       "collection": [],
       "archive": [],
       "wishlist": [],
       "cart": [],
       "id": 1
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-01.jpg",
+      "author": "Ohula Malsh",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg",
+      "title": "Data Science and Machine Learning with Python - Hands On!",
+      "rating": "3",
+      "price": "720",
+      "level": "Secandary",
+      "lecture": "80",
+      "durationH": "02",
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Margarita James",
+          "job": "MSC, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "title": "Create Amazing Color Schemes for Your UX Design Projects Ux ",
+      "rating": "2",
+      "price": "520",
+      "level": "Secandary",
+      "lecture": "10",
+      "durationH": "02",
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
+      "author": "Rose Simmons ",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
+      "title": "Culture & Leadership: Strategies for a Successful Business Ux",
+      "rating": "2",
+      "price": "320",
+      "level": "Primary",
+      "lecture": "15",
+      "durationH": "02",
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Sonya Gordon",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+          "job": "MBA, Instructor"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "author": "Jason Williams",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-04.jpg",
+      "title": "Build Brand Into Marketing: Tackling the New Marketing Landscape Ux",
+      "rating": "3",
+      "price": "480",
+      "level": "Primary",
+      "lecture": "15",
+      "durationH": "02",
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+      "author": "Pamela Foste",
+      "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+      "title": "Create Amazing Color Schemes for Your UX Design Projects Ux",
+      "rating": "1",
+      "price": "420",
+      "level": "Secandary",
+      "lecture": "30",
+      "durationH": "02",
+      "durationM": "15",
+      "instructor": [
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        },
+        {
+          "name": "Archie Neal",
+          "job": "BBS, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-01.jpg"
+        },
+        {
+          "name": "Mitchell Colon",
+          "job": "BBA, Instructor",
+          "image": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg"
+        }
+      ]
     }
   ]
 }

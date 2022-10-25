@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@mui/system";
-import { Box, Avatar, Typography, Grid, Item, Link } from "@mui/material";
+import { Box, Grid, Link } from "@mui/material";
 import {
   StyledAppBox,
   StyledBtnGoogleBox,
@@ -11,7 +11,6 @@ import Arrow from "../assets/shape-14.webp";
 import GoogleImg from "../assets/google-play.webp";
 import AppStoreImg from "../assets/app-store.webp";
 import {
-  StyledSectionTitle,
   StyledWhiteTxt,
   StyledWhiteTitle,
 } from "../styled/Typography";
@@ -19,7 +18,7 @@ import {
 export default function GetAppComponent() {
   return (
     <>
-      <StyledAppBox sx={{position: "relative",overflow:'hidden' }}>
+      <StyledAppBox sx={{position: "relative",overflow:'hidden' ,marginTop:"50px"}}>
       <StyledGetAppCircularShape
               sx={{ bottom: "40%", left: "5%" }}
             ></StyledGetAppCircularShape>
