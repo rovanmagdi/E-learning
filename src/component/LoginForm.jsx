@@ -35,7 +35,6 @@ export default function LoginForm() {
   }, []);
 
   const handleLogin = async () => {
-    console.log(currentUser);
     setErrorState(false);
     //  setCurrentUser( {});
 
@@ -50,14 +49,16 @@ export default function LoginForm() {
     );
     if (isValid.current) {
       setErrorState(false);
+      
       await setCurrentUser(
         users.current.find(
           (el) =>
-            (el.name === userNameOrEmail || el.email === userNameOrEmail) &&
-            el.password === inputPassword
-        )
-      );
-      // console.log(await currentUser);
+          (el.name === userNameOrEmail || el.email === userNameOrEmail) &&
+          el.password === inputPassword
+          )
+          );
+          // console.log(await currentUser);
+          localStorage.setItem("user", JSON.stringify(currentUser));
 
       console.log("logged in");
     } else {
