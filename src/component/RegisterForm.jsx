@@ -10,11 +10,15 @@ import {
 import axios from "axios";
 
 import { StyledFormBox } from "../styled/Box";
-import { FormControl } from "@mui/material";
+import { FormControl, Button } from "@mui/material";
 import { StyledFormInput } from "../styled/TextFiled.jsx";
 import { StyledGreenButton, StyledLightGreenButton } from "../styled/Button";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useContext, useEffect } from "react";
 import Joi from "joi";
+import { AppContext } from "../context";
+import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+// import { gapi } from "gapi-script";
 
 export default function RegisterForm() {
   const [user, setUser] = useState({
@@ -29,6 +33,11 @@ export default function RegisterForm() {
   const { name, email, password, confirmPassword } = user;
   const BASE_URL = "http://localhost:4200/users";
   const duplicateName = useRef("");
+  const duplicateEmail = useRef("");
+  const { currentUser, setCurrentUser } = useContext(AppContext);
+  const navigate = useNavigate();
+  const clientId =
+    "1007166584351-kk9dpm5hcrki1sbad0vuamgalgk1d1c1.apps.googleusercontent.com";
 
   useEffect(() => {
     axios.get(`${BASE_URL}`).then((resp) => {
@@ -50,20 +59,22 @@ export default function RegisterForm() {
       email: Joi.string()
         .required()
         .regex(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
-      password: Joi.string(),
-      // .required()
-      // .regex(
-      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-      // ),
-      confirmPassword: Joi.any(),
-      // .valid(Joi.ref("password")).required(),
+      password: Joi.string()
+        .required()
+        .regex(
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        ),
+      confirmPassword: Joi.any().valid(Joi.ref("password")).required(),
     });
 
     return schema.validate({ ...state }, { abortEarly: false });
   };
-  let errors = [];
+
+  
+    
 
   const handleSubmit = () => {
+    let errors = [];
     validations(user).error?.details.forEach((element) => {
       errors.push(element.path[0]);
     });
@@ -72,12 +83,13 @@ export default function RegisterForm() {
     errors.length === 0 ? (isValid.current = true) : (isValid.current = false);
 
     if (isValid.current) {
-      // console.log(errors);
       duplicateName.current = users.find((el) => el.name === user.name)?.name;
 
-      if (!duplicateName.current) {
-        console.log("not duplicate name");
+      duplicateEmail.current = users.find(
+        (el) => el.email === user.email
+      )?.email;
 
+      if (!duplicateName.current && !duplicateEmail.current) {
         localStorage.setItem("user", JSON.stringify(user));
 
         axios.post(`${BASE_URL}`, {
@@ -87,8 +99,61 @@ export default function RegisterForm() {
           wishlist: [],
           cart: [],
         });
+
+        setCurrentUser({
+          ...user,
+          collection: [],
+          archive: [],
+          wishlist: [],
+          cart: [],
+        });
+        navigate("/home");
       }
     }
+  };
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const onSuccess = (res) => {
+    const { name, email } = res.profileObj;
+
+    const googleUser = users.find(
+      (el) => el.name === name || el.email === email
+    );
+    // console.log(googleUser);
+    if (googleUser) {
+      localStorage.setItem("user", JSON.stringify(googleUser));
+      setCurrentUser({
+        ...googleUser,
+      });
+      navigate("/home");
+    } else {
+      localStorage.setItem("user", JSON.stringify({ name, email, collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [], }));
+      setCurrentUser({
+        name: name,
+        email: email,
+        collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [],
+      });
+      axios.post(`${BASE_URL}`, {
+        name: name,
+        email: email,
+        collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [],
+      });
+      navigate("/home");
+    }
+  };
+  const onFailure = (err) => {
+    console.log("failed:", err);
   };
 
   return (
@@ -133,7 +198,6 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-
           <StyledFormInput
             id="outlined-basic"
             label="Email"
@@ -145,6 +209,11 @@ export default function RegisterForm() {
           />
           {errorState.find((el) => el === "email") ? (
             <StyledError> EX: "example@domain.com"</StyledError>
+          ) : (
+            <StyledError></StyledError>
+          )}
+          {duplicateEmail.current ? (
+            <StyledError>This email already have an account</StyledError>
           ) : (
             <StyledError></StyledError>
           )}
@@ -166,7 +235,6 @@ export default function RegisterForm() {
           ) : (
             <StyledError></StyledError>
           )}
-
           <StyledFormInput
             id="outlined-basic"
             label="Confirm password"
@@ -189,9 +257,28 @@ export default function RegisterForm() {
           >
             Create an account
           </StyledGreenButton>
-          <StyledLightGreenButton variant="contained" fullWidth>
-            Signup with google
-          </StyledLightGreenButton>
+          <GoogleLogin
+            clientId={clientId}
+            render={(renderProps) => (
+              <StyledLightGreenButton
+                variant="contained"
+                fullWidth
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                Sign in with Google
+              </StyledLightGreenButton>
+            )}
+            buttonText="Login"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={false}
+          />
+          <StyledBlackTxt>Already have an account?</StyledBlackTxt>{" "}
+          <Button onClick={handleLogin}>
+            <StyledGreenTxt>Login</StyledGreenTxt>
+          </Button>
         </FormControl>
       </StyledFormBox>
     </>

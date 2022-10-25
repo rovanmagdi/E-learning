@@ -2,7 +2,7 @@
   "users": [
     {
       "name": "shefaa",
-      "email": "shefaa@gmail.com",
+      "email": "aaa@gmail.com",
       "password": "123456789aa@",
       "confirmPassword": "123456789aa@",
       "collection": [],
@@ -10,138 +10,6 @@
       "wishlist": [],
       "cart": [],
       "id": 1
-    },
-    {
-      "name": "shefaa2",
-      "email": "shefaa2@gmail.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 2
-    },
-    {
-      "name": "Shefaa_Adel",
-      "email": "shehhhfasaa@gg.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 3
-    },
-    {
-      "name": "Shefaa_Adel",
-      "email": "shehhhfasaa@gg.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 4
-    },
-    {
-      "name": "Shefaa_Adel",
-      "email": "shehhhfasaa@gg.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 5
-    },
-    {
-      "name": "sss",
-      "email": "shehhhfasaa@gg.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 6
-    },
-    {
-      "name": "rovan",
-      "email": "Rovanmagdi26699@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 8
-    },
-    {
-      "name": "Botetos",
-      "email": "Rovanmagdi26699@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 9
-    },
-    {
-      "name": "rovan55",
-      "email": "Rovanmagdi@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 10
-    },
-    {
-      "name": "rovan55q",
-      "email": "Rovanmagdi@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 11
-    },
-    {
-      "name": "Botetos22",
-      "email": "ali@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 12
-    },
-    {
-      "name": "Botetos88888",
-      "email": "Rovanmagdi26699@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 13
-    },
-    {
-      "name": "rovan12",
-      "email": "Sincere@april.biz",
-      "password": "123",
-      "confirmPassword": "123",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 14
     }
   ],
   "courses": [
@@ -195,7 +63,8 @@
       "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-03.jpg",
       "author": "Rose Simmons ",
       "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-03.jpg",
-      "title": "Culture & Leadership: Strategies for a Successful Business Ux" ,  "rating": "2",
+      "title": "Culture & Leadership: Strategies for a Successful Business Ux",
+      "rating": "2",
       "price": "320",
       "level": "Primary",
       "lecture": "15",
@@ -255,7 +124,7 @@
       "author": "Pamela Foste",
       "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
       "title": "Create Amazing Color Schemes for Your UX Design Projects Ux",
-       "rating": "1",
+      "rating": "1",
       "price": "420",
       "level": "Secandary",
       "lecture": "30",
