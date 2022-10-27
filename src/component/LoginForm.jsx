@@ -17,6 +17,7 @@ import axios from "axios";
 import { AppContext } from "../context";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
 
 export default function LoginForm() {
   const [user, setUser] = useState({
@@ -37,6 +38,14 @@ export default function LoginForm() {
     axios.get(`${BASE_URL}`).then((resp) => {
       setUsers(resp.data);
     });
+
+    const initClient = () => {
+      gapi.auth2.init({
+          clientId: clientId,
+          scope: ''
+      });
+  };
+  gapi.load('client:auth2', initClient);
   }, [users]);
 
   const handleChange = useCallback((event) => {
@@ -61,6 +70,13 @@ export default function LoginForm() {
             el.password === inputPassword
         )
       );
+      // localStorage.setItem()
+      localStorage.setItem("user", JSON.stringify(users.find(
+        (el) =>
+          (el.name === userNameOrEmail || el.email === userNameOrEmail) &&
+          el.password === inputPassword
+      )));
+
 
       // console.log("logged in");
       navigate("/home");
@@ -79,16 +95,16 @@ export default function LoginForm() {
     );
     console.log(googleUser);
     if (googleUser) {
-      localStorage.setItem("user", JSON.stringify({ name, email, collection: [],
-        archive: [],
-        wishlist: [],
-        cart: [], }));
+      localStorage.setItem("user", JSON.stringify(googleUser));
       setCurrentUser({
         ...googleUser,
       });
       navigate("/home");
     } else {
-      localStorage.setItem("user", JSON.stringify({ name, email }));
+      localStorage.setItem("user", JSON.stringify({ name, email, collection: [],
+        archive: [],
+        wishlist: [],
+        cart: [], }));
       setCurrentUser({
         name: name,
         email: email,
