@@ -24,7 +24,7 @@ const Navbar = () => {
   const [navPosition, setnavPosition] = React.useState("absolute");
   const [navTop, setnavTop] = React.useState("40");
   const [navBorder, setnavBorder] = React.useState("rgba(48,146,85,0.25)");
-  const [currentUserStorage, setCurrentUserStorage] = React.useState("");
+  const currentUserStorage = JSON.parse(localStorage.getItem("user")) ;
 
   const navigate = useNavigate();
   const listenScrollEvent = () => {
@@ -53,9 +53,9 @@ const Navbar = () => {
     };
   }, []);
 
-  React.useEffect(() => {
-    setCurrentUserStorage(JSON.parse(localStorage.getItem("user")));
-  }, [currentUserStorage]);
+  // React.useEffect(() => {
+  //   setCurrentUserStorage(JSON.parse(localStorage.getItem("user")));
+  // }, [currentUserStorage]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -109,7 +109,7 @@ const Navbar = () => {
                   ))}
                 </Box>
               </Grid>
-              {currentUserStorage ? (
+              {currentUserStorage? (
                 <Grid item xs={4} md={3}>
                   <Box
                     display="flex"
