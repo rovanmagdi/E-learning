@@ -44,7 +44,7 @@ export default function PagesCoverComponent(props) {
         <Avatar
           src={Author}
           sx={{
-            width: { lg: "15%", md: "16%", sm: "16%", xs: "16%" },
+            width: { lg: "11%", md: "12%", sm: "12%", xs: "12%" },
             height: { lg: "33%", md: "30%", sm: "25%", xs: "25%" },
             position: "absolute",
             bottom: "15%",
@@ -116,7 +116,6 @@ export default function PagesCoverComponent(props) {
           component="img"
           sx={{
             width: "8%",
-
             position: "absolute",
             top: "30%",
             left: "10%",

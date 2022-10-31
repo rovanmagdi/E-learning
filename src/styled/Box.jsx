@@ -39,7 +39,7 @@ export const StyledCircularBorder = styled(Box)(({ theme }) => ({
 
 export const StyledCircularBox = styled(Box)(({ theme }) => ({
   width: "70%",
-  height: "90%",
+  height: "70%",
   //  textAlign: 'center',
   borderRadius: "50%",
   padding: "10px",
