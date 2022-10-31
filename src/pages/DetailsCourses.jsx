@@ -7,9 +7,8 @@ export default function DetailsCourse() {
   return (
     <>
       <PagesCoverComponent firstWord="Courses " secondWord="Details" />
-        <CourseDetailsComponent/>
+      <CourseDetailsComponent />
       <GetAppComponent />
-
     </>
   );
 }

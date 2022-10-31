@@ -34,6 +34,7 @@ export default function RegisterForm() {
   const BASE_URL = "http://localhost:3200/users";
   const duplicateName = useRef("");
   const duplicateEmail = useRef("");
+  
   const { currentUser, setCurrentUser } = useContext(AppContext);
   const navigate = useNavigate();
   const clientId =

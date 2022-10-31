@@ -16,22 +16,20 @@
       "email": "ali@gmail.com",
       "password": "123456789aa@",
       "confirmPassword": "123456789aa@",
-      "collection": [],
+      "collection": [
+        {
+          "id": "2",
+          "imageBase": "https://htmldemo.net/edule/eduLe/assets/images/courses/courses-02.jpg",
+          "author": "Pamela Foste",
+          "imageAuthor": "https://htmldemo.net/edule/eduLe/assets/images/author/author-02.jpg",
+          "title": "Create Amazing Color Schemes for Your UX Design Projects Ux ",
+          "rating": "2"
+        }
+      ],
       "archive": [],
       "wishlist": [],
       "cart": [],
       "id": 2
-    },
-    {
-      "name": "rovan12lkk",
-      "email": "alkjji@gmail.com",
-      "password": "123456789aa@",
-      "confirmPassword": "123456789aa@",
-      "collection": [],
-      "archive": [],
-      "wishlist": [],
-      "cart": [],
-      "id": 3
     },
     {
       "name": "rovan1255",
@@ -43,6 +41,28 @@
       "wishlist": [],
       "cart": [],
       "id": 4
+    },
+    {
+      "name": "Botetos",
+      "email": "Shanna@melissa.tv",
+      "password": "123456789aa@",
+      "confirmPassword": "123456789aa@",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 5
+    },
+    {
+      "name": "aliaa",
+      "email": "aliaa@gmail.com",
+      "password": "123456789aa@",
+      "confirmPassword": "123456789aa@",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 6
     }
   ],
   "courses": [
@@ -181,5 +201,6 @@
         }
       ]
     }
-  ]
+  ],
+  "carts": []
 }

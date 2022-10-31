@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import CoursesComponent from "./coursesComponent";
 import { Container } from "@mui/system";
 import {
-  
   CircularProgress,
   FormControl,
   Grid,
@@ -21,6 +20,9 @@ import { StyledBoxSearch } from "../styled/Box";
 import { useTheme } from "@emotion/react";
 import { AppContext } from "../context";
 import MediaCard from "./cardComponent";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -29,7 +31,7 @@ function TabPanel(props) {
 }
 
 const CoursesTab = () => {
-  // const [ currentUser, setCurrentUser ] = React.useContext(AppContext);
+  
 
   const [currentCourses, setCurrentCourses] = React.useState([]);
 
@@ -60,6 +62,17 @@ const CoursesTab = () => {
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("1199"));
+
+  const BASE_URL = "http://localhost:3200/users";
+  const storageId = JSON.parse(localStorage.getItem("user"))?.id;
+
+  const [collection, setCollection] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/${storageId}`).then((response) => {
+      setCollection(response.data);
+    });
+  }, [storageId]);
 
   return (
     <>
@@ -181,7 +194,29 @@ const CoursesTab = () => {
                 )}
               </TabPanel>
               <TabPanel value={value} index={1}>
-                Item Two
+                <Grid item container>
+                  {collection?.collection?(collection?.collection?.map((item, index) => {
+                    return (
+                      <Grid
+                        item
+                        xs={4}
+                        key={index}
+                        sx={{ margin: "50px 0px 50px 0px" }}
+                        // onClick={() => handleCourse(course.id)}
+                      >
+                        <MediaCard
+                          imageBase={item.imageBase}
+                          author={item.author}
+                          imageAuthor={item.imageAuthor}
+                          title={item.title}
+                          id={item.id}
+                          rating={item.rating}
+                          // arr={arr}
+                        />
+                      </Grid>
+                    );
+                  })):(<><CircularProgress/></>)}
+                </Grid>
               </TabPanel>
               <TabPanel value={value} index={2}>
                 Item Three
@@ -265,7 +300,7 @@ const CoursesTab = () => {
                 </Grid>
               </StyledNavCourses>{" "}
               <TabPanel value={value} index={0}>
-              {!valueSearch ? (
+                {!valueSearch ? (
                   currentCourses ? (
                     <CoursesComponent />
                   ) : (

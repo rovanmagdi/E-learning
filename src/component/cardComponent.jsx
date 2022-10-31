@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Grid } from "@mui/material";
+import {  Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Rating from "@mui/material/Rating";
 import { StyledCardCourse } from "../styled/Card";
@@ -17,7 +17,7 @@ import { useNavigate } from "react-router";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-const options = ["Create Collection", "Favorite","Archive"];
+
 
 const ITEM_HEIGHT = 48;
 
@@ -28,12 +28,13 @@ export default function MediaCard({
   imageAuthor,
   title,
   rating,
+  arr,
 }) {
   const handleChange = async (event, id) => {
     console.log(event);
 
     const response = await axios
-      .patch(`http://localhost:4000/courses/${id}`, { rating: event })
+      .patch(`http://localhost:3200/courses/${id}`, { rating: event })
       .catch((error) => console.log("Error: ", error));
     if (response && response.data) {
       console.log(response.data);
@@ -53,6 +54,33 @@ export default function MediaCard({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // let obj = { id, imageBase, author, imageAuthor, title, rating };
+  //  const abc= [...inputArr,[]];
+  //  setInputArr(abc)
+
+
+  
+
+  const handleAddCollection = (id) => {
+    let obj = { id, imageBase, author, imageAuthor, title, rating };
+    !arr[obj.id] && arr.push(obj);
+    console.log(arr);
+   
+      const response = axios
+        .patch(
+          `http://localhost:3200/users/${
+            JSON.parse(localStorage.getItem("user")).id
+          }`,
+          { collection: arr }
+        )
+        .catch((error) => console.log("Error: ", error));
+      if (response && response.data) {
+        console.log(response.data);
+      }
+   
+  };
+
   return (
     <StyledCardCourse>
       <CardHeader
@@ -84,21 +112,17 @@ export default function MediaCard({
             maxHeight: ITEM_HEIGHT * 4.5,
             width: "20ch",
             backgroundColor: "rgba(48,146,85,0.9)",
-            left:""
-            
+            left: "",
           },
         }}
+      >
+        <MenuItem
+          sx={{ color: "white" }}
+          selected={"collection".bool}
+          onClick={() => handleAddCollection(id)}
         >
-        {options.map((option) => (
-          <MenuItem
-          key={option}
-          sx={{color:"white"}}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
+          Collection
+        </MenuItem>
       </Menu>
 
       <Box component="div" onClick={() => handleClick(id)}>

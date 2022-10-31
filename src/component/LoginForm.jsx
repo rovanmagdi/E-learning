@@ -30,7 +30,7 @@ export default function LoginForm() {
   const { userNameOrEmail, inputPassword } = user;
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(AppContext);
+  const {  setCurrentUser } = useContext(AppContext);
   const clientId =
     "1007166584351-kk9dpm5hcrki1sbad0vuamgalgk1d1c1.apps.googleusercontent.com";
 

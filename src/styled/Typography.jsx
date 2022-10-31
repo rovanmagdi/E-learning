@@ -57,7 +57,7 @@ export const StyledtitleFooterResponsive = styled(Typography)(({ theme }) => ({
 //Register
 export const StyledError = styled(Typography)(({ theme }) => ({
   color: "red",
-  textAlign:'left'
+  textAlign: "left",
 }));
 export const StyledWhiteTxt = styled(Typography)(({ theme }) => ({
   color: `#FFFFFF`,
@@ -83,23 +83,31 @@ export const StyledWhiteTitle = styled(Typography)(({ theme }) => ({
 }));
 //Not Found
 export const StyledTypographyNotFound = styled(Typography)(({ theme }) => ({
- color:`${theme.palette.primary.main}`,
- fontSize:"22px",
- marginBottom:"20px"
+  color: `${theme.palette.primary.main}`,
+  fontSize: "22px",
+  marginBottom: "20px",
 }));
 
-export const StyledTypographyNotFoundTitle = styled(Typography)(({ theme }) => ({
-  fontWeight:"520",
-  fontSize:"40px",
-  marginBottom:"20px"
- }));
+export const StyledTypographyNotFoundTitle = styled(Typography)(
+  ({ theme }) => ({
+    fontWeight: "520",
+    fontSize: "40px",
+    marginBottom: "20px",
+  })
+);
 
- 
- //Details Courses
- export const StyledTypographyDetails = styled(Typography)(({ theme }) => ({
+//Details Courses
+export const StyledTypographyDetails = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   margin: "30px 0px 30px 0px",
   fontSize: "2rem",
   fontWeight: "800",
   color: `${theme.palette.primary.main}`,
- }));
+}));
+
+//Cart
+export const StyledTypographyCart = styled(Typography)(({ theme }) => ({
+  fontSize: "3rem",
+  fontWeight: "bold",
+  color: `${theme.palette.primary.main}`,
+}));

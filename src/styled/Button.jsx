@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 //Navbar
 export const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: "capitalize",

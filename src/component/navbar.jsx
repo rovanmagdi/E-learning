@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { StyledNavbar, StyledNavbarResponsive } from "../styled/Grid";
 
 import { StyledButton } from "../styled/Button";
-import { Grid, Link, Container, IconButton } from "@mui/material";
+import { Grid, Link, Container, IconButton, Badge } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TemporaryDrawer from "./drawar";
@@ -14,6 +14,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useCart } from "react-use-cart";
+import { CartContext } from "../context";
+import { useContext } from "react";
 
 const pages = ["Home", "All Courses", "Pages", "Blog", "Content"];
 
@@ -24,7 +27,7 @@ const Navbar = () => {
   const [navPosition, setnavPosition] = React.useState("absolute");
   const [navTop, setnavTop] = React.useState("40");
   const [navBorder, setnavBorder] = React.useState("rgba(48,146,85,0.25)");
-  const currentUserStorage = JSON.parse(localStorage.getItem("user")) ;
+  const currentUserStorage = JSON.parse(localStorage.getItem("user"));
 
   const navigate = useNavigate();
   const listenScrollEvent = () => {
@@ -66,10 +69,20 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  var { emptyCart,totalItems } = useCart();
+
   const handleSignOut = () => {
     localStorage.removeItem("user");
     navigate("/");
   };
+  
+
+  const handleCart = () => {
+    navigate("/cart");
+    totalItems=5;
+    
+  };
+
   return (
     <Grid
       container
@@ -109,18 +122,21 @@ const Navbar = () => {
                   ))}
                 </Box>
               </Grid>
-              {currentUserStorage? (
+              {currentUserStorage ? (
                 <Grid item xs={4} md={3}>
                   <Box
                     display="flex"
                     justifyContent="flex-end"
                     alignItems="center"
                   >
-                    <ShoppingCartIcon
-                      sx={{ color: "#198754", cursor: "pointer" }}
-                    />
+                    <Badge badgeContent={totalItems} color="primary">
+                      <ShoppingCartIcon
+                        sx={{ color: "#198754", cursor: "pointer" }}
+                        onClick={handleCart}
+                      />
+                    </Badge>
                     <StyledLink sx={{ marginRight: "30px" }}>
-                      {currentUserStorage.name}
+                      {currentUserStorage?.name}
                     </StyledLink>
                     <IconButton
                       sx={{ marginRight: "30px" }}
@@ -159,7 +175,10 @@ const Navbar = () => {
                       <MenuItem
                         sx={{ color: "white" }}
                         selected="profile"
-                        onClick={handleSignOut}
+                        onClick={() => {
+                          handleSignOut();
+                          emptyCart();
+                        }}
                       >
                         Sign out
                       </MenuItem>

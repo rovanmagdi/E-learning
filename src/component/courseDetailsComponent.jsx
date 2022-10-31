@@ -18,12 +18,16 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import axios from "axios";
 import { useParams } from "react-router";
+import { useCart } from "react-use-cart";
+
+
 const CourseComponent = () => {
   const [course, setCourse] = useState({});
   const [rating, setrating] = useState("");
 
   const { id } = useParams();
-  const BASE_URL = "http://localhost:4200/courses";
+
+  const BASE_URL = "http://localhost:3200/courses";
   useEffect(() => {
     axios.get(`${BASE_URL}/${id}`).then((response) => {
       setCourse(response.data);
@@ -35,7 +39,7 @@ const CourseComponent = () => {
     // console.log(event);
 
     const response = await axios
-      .patch(`http://localhost:4200/courses/${id}`, { rating: event })
+      .patch(`${BASE_URL}/${id}`, { rating: event })
       .catch((error) => console.log("Error: ", error));
     if (response && response.data) {
       console.log(response.data);
@@ -45,198 +49,221 @@ const CourseComponent = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("976"));
 
+  const { addItem, items } = useCart();
+
+  useEffect(() => {
+    const response = axios
+      .patch(
+        `http://localhost:3200/users/${
+          JSON.parse(localStorage.getItem("user")).id
+        }`,
+        { cart: items }
+      )
+      .catch((error) => console.log("Error: ", error));
+    if (response && response.data) {
+      console.log(response.data);
+    }
+  }, [items]);
+
+  const handleAddToCart = (item) => {
+    addItem(item);
+  };
+
   return (
-    <>
-      <Container>
-        {matches ? (
-          <>
-            <Grid container item xs={12} sx={{ marginTop: "50px" }}>
-              <Grid item xs={7} sx={{ marginRight: "30px" }}>
-                <Box
-                  component="img"
-                  src={`${course.imageBase}`}
-                  width="100%"
-                  height="420px"
-                  sx={{ borderRadius: "20px" }}
-                />
-                <Typography
-                  component="h1"
-                  variant="body1"
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "1.9rem",
-                    marginTop: "20px",
-                  }}
-                >
-                  {course.title}
-                </Typography>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
-                >
-                  <Grid item xs={8}>
-                    <Stack
-                      direction="row"
-                      spacing={2}
-                      sx={{ alignItems: "center" }}
+    // <AppContext.Provider value={{ currentUser, setCurrentUser }}>
+
+    <Container>
+      {matches ? (
+        <>
+          <Grid container item xs={12} sx={{ marginTop: "50px" }}>
+            <Grid item xs={7} sx={{ marginRight: "30px" }}>
+              <Box
+                component="img"
+                src={`${course.imageBase}`}
+                width="100%"
+                height="420px"
+                sx={{ borderRadius: "20px" }}
+              />
+              <Typography
+                component="h1"
+                variant="body1"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "1.9rem",
+                  marginTop: "20px",
+                }}
+              >
+                {course.title}
+              </Typography>
+              <Grid
+                container
+                item
+                xs={12}
+                sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
+              >
+                <Grid item xs={8}>
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <Box
+                      component="img"
+                      src={`${course.imageAuthor}`}
+                      sx={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
                     >
-                      <Box
-                        component="img"
-                        src={`${course.imageAuthor}`}
-                        sx={{
-                          width: "50px",
-                          height: "50px",
-                          borderRadius: "50%",
+                      {course.author}
+                    </Typography>
+                  </Stack>
+                </Grid>
+                <Grid item xs={2}>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="share">
+                      {/* <StarIcon sx={{ color: "#ffba00" }} />
+                       */}
+                      <Rating
+                        name="simple-controlled"
+                        value={Number(rating)}
+                        onChange={(event) => {
+                          handleChange(event.target.value, id);
                         }}
                       />
-                      <Typography
-                        variant="body2"
-                        component="span"
-                        sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
-                      >
-                        {course.author}
-                      </Typography>
-                    </Stack>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <CardActions disableSpacing>
-                      <IconButton aria-label="share">
-                        {/* <StarIcon sx={{ color: "#ffba00" }} />
-                         */}
-                        <Rating
-                          name="simple-controlled"
-                          value={Number(rating)}
-                          onChange={(event) => {
-                            handleChange(event.target.value, id);
-                          }}
-                        />
-                      </IconButton>
-                    </CardActions>
-                  </Grid>
+                    </IconButton>
+                  </CardActions>
                 </Grid>
               </Grid>
-              <StyledGridDetails item xs={4}>
-                <StyledTypographyDetails variant="body2" component="h1">
-                  $ {course.price}
-                </StyledTypographyDetails>
+            </Grid>
+            <StyledGridDetails item xs={4}>
+              <StyledTypographyDetails variant="body2" component="h1">
+                $ {course.price}
+              </StyledTypographyDetails>
 
-                <Box sx={{ width: "80%", maxWidth: 360, margin: "auto" }}>
-                  <Divider />
-                  <ListDetailsCourses
-                    icon={<PersonIcon />}
-                    nickName="Instructor"
-                    name={course.author}
-                  />
-                  <ListDetailsCourses
-                    icon={<AccessTimeIcon />}
-                    nickName="Duration"
-                    name={`${course.durationH} hr ${course.durationM} mins`}
-                  />
-                  <ListDetailsCourses
-                    icon={<TheatersIcon />}
-                    nickName="Lectures"
-                    name={course.lecture}
-                  />
-                  <ListDetailsCourses
-                    icon={<ListIcon />}
-                    nickName="Level"
-                    name={course.level}
-                  />
-                  <ListDetailsCourses
-                    icon={<LibraryBooksIcon />}
-                    nickName="Language"
-                    name="English"
-                  />
-                  <ListDetailsCourses
-                    icon={<TheatersIcon />}
-                    nickName="Certificate"
-                    name="Yes"
-                  />
-                  <Box textAlign="center">
-                    <StyledButtonDetails variant="contained" sx={{}}>
-                      Enroll Now
-                    </StyledButtonDetails>
-                  </Box>
+              <Box sx={{ width: "80%", maxWidth: 360, margin: "auto" }}>
+                <Divider />
+                <ListDetailsCourses
+                  icon={<PersonIcon />}
+                  nickName="Instructor"
+                  name={course.author}
+                />
+                <ListDetailsCourses
+                  icon={<AccessTimeIcon />}
+                  nickName="Duration"
+                  name={`${course.durationH} hr ${course.durationM} mins`}
+                />
+                <ListDetailsCourses
+                  icon={<TheatersIcon />}
+                  nickName="Lectures"
+                  name={course.lecture}
+                />
+                <ListDetailsCourses
+                  icon={<ListIcon />}
+                  nickName="Level"
+                  name={course.level}
+                />
+                <ListDetailsCourses
+                  icon={<LibraryBooksIcon />}
+                  nickName="Language"
+                  name="English"
+                />
+                <ListDetailsCourses
+                  icon={<TheatersIcon />}
+                  nickName="Certificate"
+                  name="Yes"
+                />
+                <Box textAlign="center">
+                  <StyledButtonDetails
+                    variant="contained"
+                    onClick={() => handleAddToCart(course)}
+                  >
+                    Enroll Now
+                  </StyledButtonDetails>
                 </Box>
-              </StyledGridDetails>
-            </Grid>
-          </>
-        ) : (
-          <Container>
-            <Grid container item xs={12} sx={{ marginTop: "50px" }}>
-              <Grid item xs={12} sx={{ marginRight: "30px" }}>
-                <Box
-                  component="img"
-                  src={`${course.imageBase}`}
-                  width="100%"
-                  height="420px"
-                  sx={{ borderRadius: "20px" }}
-                />
-                <Typography
-                  component="h1"
-                  variant="body1"
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "1.9rem",
-                    marginTop: "20px",
-                  }}
-                >
-                  {course.title}
-                </Typography>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
-                >
-                  <Grid item xs={8}>
-                    <Stack
-                      direction="row"
-                      spacing={2}
-                      sx={{ alignItems: "center" }}
+              </Box>
+            </StyledGridDetails>
+          </Grid>
+        </>
+      ) : (
+        <Container>
+          <Grid container item xs={12} sx={{ marginTop: "50px" }}>
+            <Grid item xs={12} sx={{ marginRight: "30px" }}>
+              <Box
+                component="img"
+                src={`${course.imageBase}`}
+                width="100%"
+                height="420px"
+                sx={{ borderRadius: "20px" }}
+              />
+              <Typography
+                component="h1"
+                variant="body1"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "1.9rem",
+                  marginTop: "20px",
+                }}
+              >
+                {course.title}
+              </Typography>
+              <Grid
+                container
+                item
+                xs={12}
+                sx={{ alignItems: "center", margin: "20px 0px 20px 0px" }}
+              >
+                <Grid item xs={8}>
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <Box
+                      component="img"
+                      src={`${course.imageAuthor}`}
+                      sx={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
                     >
-                      <Box
-                        component="img"
-                        src={`${course.imageAuthor}`}
-                        sx={{
-                          width: "50px",
-                          height: "50px",
-                          borderRadius: "50%",
+                      {course.author}
+                    </Typography>
+                  </Stack>
+                </Grid>
+                <Grid item xs={2}>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="share">
+                      <Rating
+                        name="simple-controlled"
+                        value={Number(rating)}
+                        onChange={(event) => {
+                          handleChange(event.target.value, id);
                         }}
                       />
-                      <Typography
-                        variant="body2"
-                        component="span"
-                        sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
-                      >
-                        {course.author}
-                      </Typography>
-                    </Stack>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <CardActions disableSpacing>
-                      <IconButton aria-label="share">
-                        <Rating
-                          name="simple-controlled"
-                          value={Number(rating)}
-                          onChange={(event) => {
-                            handleChange(event.target.value, id);
-                          }}
-                        />
-                      </IconButton>
-                    </CardActions>
-                  </Grid>
+                    </IconButton>
+                  </CardActions>
                 </Grid>
               </Grid>
             </Grid>
-          </Container>
-        )}
+          </Grid>
+        </Container>
+      )}
 
-        <DetailsCourseTab instructor={course.instructor}/>
-      </Container>
-    </>
+      <DetailsCourseTab instructor={course.instructor} />
+    </Container>
   );
 };
 
