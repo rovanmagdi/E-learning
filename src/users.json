@@ -19,6 +19,17 @@
       "wishlist": [],
       "cart": [],
       "id": 2
+    },
+    {
+      "name": "shefaa2",
+      "email": "ss2s@hh.com",
+      "password": "123456789aa@",
+      "confirmPassword": "123456789aa@",
+      "collection": [],
+      "archive": [],
+      "wishlist": [],
+      "cart": [],
+      "id": 3
     }
   ],
   "courses": [
