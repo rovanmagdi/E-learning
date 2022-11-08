@@ -5,7 +5,7 @@ import MediaCard from "./cardComponent";
 import axios from "axios";
 import { AppContext } from "../context";
 
-const BASE_URL = "http://localhost:4200/courses";
+const BASE_URL = "http://localhost:3200/courses";
 
 const CoursesComponent = () => {
   const [course, setCourse] = useState([]);
@@ -19,12 +19,10 @@ const CoursesComponent = () => {
     });
   }, [setCurrentCourses]);
 
-  const handleCourse = () => {
-    // axios.post(`${BASE_URL}`,{rating:data}).then((response) => {
-    //   console.log(data);
-    // });
-  };
 
+
+  
+var arr=[]
   return (
     <Grid item container>
       {course.map((course, index) => {
@@ -34,7 +32,7 @@ const CoursesComponent = () => {
             xs={4}
             key={index}
             sx={{ margin: "50px 0px 50px 0px" }}
-            onClick={() => handleCourse(course.id)}
+            // onClick={() => handleCourse(course.id)}
           >
             <MediaCard
               imageBase={course.imageBase}
@@ -43,6 +41,7 @@ const CoursesComponent = () => {
               title={course.title}
               id={course.id}
               rating={course.rating}
+              arr={arr}
             />
           </Grid>
         );

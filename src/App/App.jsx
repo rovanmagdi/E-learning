@@ -1,6 +1,6 @@
 // import Header from "../component/header";
 
-import React, {  useEffect, useState } from 'react';
+import React, {  useState } from "react";
 import Navbar from "../component/navbar";
 import { theme } from "../theme/index";
 import { ThemeProvider } from "@mui/system";
@@ -10,55 +10,59 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import SignUpPage from "../pages/SignUpPage";
 import CoursesPage from "../pages/CoursesPage";
-import LoginPage from '../pages/LoginPage'
+import LoginPage from "../pages/LoginPage";
 
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage";
 import DetailsCourse from "../pages/DetailsCourses";
-import { AppContext } from '../context';
+import { AppContext } from "../context";
+import { CartProvider } from 'react-use-cart';
+
+import CartPage from "../pages/CartPage";
 
 function App() {
   const themeResponsive = useTheme();
   const matches = useMediaQuery(themeResponsive.breakpoints.up("976"));
   // const { courseContext, setCourseContext } = useState({});
-   const [ currentUser, setCurrentUser ] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
 
- 
-  useEffect(() =>{
-    // console.log(currentUser);
-    // console.log(courseContext);
-
-  })
   return (
-    <AppContext.Provider value={{ currentUser,setCurrentUser }}>
-    <ThemeProvider theme={theme}>
-      {matches ? (
-        <>
-          <NavbarTop />
-          <Navbar />
-        </>
-      ) : (
-        <>
-          {" "}
-          <Navbar />
-        </>
-      )}
+    <CartProvider>
 
-      {/* <Header /> */}
+    <AppContext.Provider value={{ currentUser, setCurrentUser }}>
+      <ThemeProvider theme={theme}>
+        {matches ? (
+          <>
+            <NavbarTop />
+            <Navbar />
+          </>
+        ) : (
+          <>
+            {" "}
+            <Navbar />
+          </>
+        )}
 
-      <Routes>
-        <Route path="/:id" element={<DetailsCourse />} />
-        <Route path="/home" element={<SignUpPage />} />
+        {/* <Header /> */}
 
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/All Courses" element={<CoursesPage />} />
-        <Route path="*" element={<NotFound/>} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<SignUpPage />} />
+          <Route path="/home" element={<SignUpPage />} />
 
-      <Footer />
-    </ThemeProvider>
-     </AppContext.Provider>
+          <Route path="/:id" element={<DetailsCourse />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/All Courses" element={<CoursesPage />} />
+          <Route path="/cart" element={<CartPage />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        <Footer />
+      </ThemeProvider>
+    </AppContext.Provider>
+    </CartProvider>
+
   );
 }
 

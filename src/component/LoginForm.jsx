@@ -24,13 +24,13 @@ export default function LoginForm() {
     userNameOrEmail: "",
     inputPassword: "",
   });
-  const BASE_URL = "http://localhost:4200/users";
+  const BASE_URL = "http://localhost:3200/users";
   const [errorState, setErrorState] = useState(false);
   const isValid = useRef(false);
   const { userNameOrEmail, inputPassword } = user;
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(AppContext);
+  const {  setCurrentUser } = useContext(AppContext);
   const clientId =
     "1007166584351-kk9dpm5hcrki1sbad0vuamgalgk1d1c1.apps.googleusercontent.com";
 
