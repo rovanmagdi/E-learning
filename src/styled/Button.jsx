@@ -49,7 +49,7 @@ export const StyledGreenButton = styled(Button)(({ theme }) => ({
   marginTop:'20px',
   borderRadius:'10px',
   padding:'10px',
-  // color:'#309255',
+  color:'#FFFFFF',
   // border:'1px solid #309255',
   boxShadow:'none',
   textTransform:'capitalize',

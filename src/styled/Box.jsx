@@ -231,3 +231,82 @@ export const StyledcourseInstructor = styled(Box)(({ theme }) => ({
   border:`3px solid ${theme.palette.primary.light}`,
   padding: "10px",
 }));
+
+
+//home page
+export const StyledHomeCover = styled(Box)(({ theme }) => ({
+  minHeight: "700px",
+  width: "100%",
+  backgroundColor: "#E7F8EE",
+  position: "relative",
+  [theme.breakpoints.down("md")]: {
+    minHeight: "500px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    minHeight: "300px",
+  },
+}));
+
+export const StyledHomeCircularBox = styled(Box)(({ theme }) => ({
+  width: "8%",
+  height: "17%",
+  //  textAlign: 'center',
+  borderRadius: "50%",
+  padding:'20px 10px 0px 10px',
+  backgroundColor: "#309255",
+  position: "absolute",
+  bottom: "35%",
+  right: "32%",
+
+  transform: "translate(-50%, -50%)",
+  textAlign: 'center',
+  [theme.breakpoints.down("lg")]: {
+   
+   width: "10%",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "none"
+  },
+}));
+
+export const HomeCoverTxtBox = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  display: "inline-block",
+  top: "40%",
+  width:'30%',
+  fontSize:'1.1em',
+    [theme.breakpoints.down("lg")]: {
+    fontSize: "1em",
+    width:'50%',
+
+  },
+  [theme.breakpoints.down("md")]: {
+    width:'70%',
+    top: "30%",
+    fontSize: ".8em",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width:'90%',
+    fontSize: ".6em",
+  }
+}));
+
+export const StyledBecomInstructorBtn = styled(Box)(({ theme }) => ({
+  // backgroundColor: "#FFFFFF",
+  width: "75%",
+
+  position: "absolute",
+  top: "30%",
+  
+  left: "50%",
+  [theme.breakpoints.down("lg")]: {
+    left: "20%",
+    position:'relative'
+    // top: "90%",
+  },
+
+  // [theme.breakpoints.down("sm")]: {
+  //   left: "0",
+  //   // width: "40%",
+  // },
+}));
