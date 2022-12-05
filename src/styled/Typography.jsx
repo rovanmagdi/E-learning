@@ -111,3 +111,19 @@ export const StyledTypographyCart = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
   color: `${theme.palette.primary.main}`,
 }));
+
+
+//home
+export const StyledHomeTitle = styled(Typography)(({ theme }) => ({
+  fontSize: "2.1rem",
+  fontWeight: "900",
+  color: `${theme.palette.secondary.main}`,
+  //   fontFamily: ["monospace", "cursive"],
+  textTransform: "capitalize",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "2rem",
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+  },
+}));

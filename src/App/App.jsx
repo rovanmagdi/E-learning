@@ -11,6 +11,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import SignUpPage from "../pages/SignUpPage";
 import CoursesPage from "../pages/CoursesPage";
 import LoginPage from "../pages/LoginPage";
+import HomePage from "../pages/HomePage";
 
 import { Route, Routes } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage";
@@ -46,8 +47,8 @@ function App() {
         {/* <Header /> */}
 
         <Routes>
-          <Route path="/" element={<SignUpPage />} />
-          <Route path="/home" element={<SignUpPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
 
           <Route path="/:id" element={<DetailsCourse />} />
           <Route path="/signup" element={<SignUpPage />} />
